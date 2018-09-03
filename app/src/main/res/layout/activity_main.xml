@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/smiley_super_happy"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@color/banana_yellow"
+                android:padding="30dp"
+                android:src="@drawable/smiley_super_happy" />
+
+
+            <ImageView
+                android:id="@+id/smiley_happy"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@color/light_sage"
+                android:padding="30dp"
+                android:src="@drawable/smiley_happy"
+                android:layout_below="@+id/smiley_super_happy"/>
+
+            <ImageView
+                android:id="@+id/smiley_normal"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@color/cornflower_blue_65"
+                android:padding="30dp"
+                android:src="@drawable/smiley_normal"
+                android:layout_below="@+id/smiley_happy"/>
+
+            <ImageView
+                android:id="@+id/smiley_disappointed"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@color/warm_grey"
+                android:padding="30dp"
+                android:src="@drawable/smiley_disappointed"
+                android:layout_below="@+id/smiley_normal"/>
+
+            <ImageView
+                android:id="@+id/smiley_sad"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@color/faded_red"
+                android:padding="30dp"
+                android:src="@drawable/smiley_sad"
+                android:layout_below="@+id/smiley_disappointed"/>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
