@@ -14,50 +14,183 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/smiley_super_happy"
+            <!-- All the different moods -->
+            <ImageButton
+                android:id="@+id/superHappyButton"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:background="@color/banana_yellow"
+                android:contentDescription="@string/app_name"
                 android:padding="30dp"
                 android:src="@drawable/smiley_super_happy" />
 
-
-            <ImageView
-                android:id="@+id/smiley_happy"
+            <ImageButton
+                android:id="@+id/happyButton"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:layout_below="@+id/superHappyButton"
                 android:background="@color/light_sage"
+                android:contentDescription="@string/app_name"
                 android:padding="30dp"
-                android:src="@drawable/smiley_happy"
-                android:layout_below="@+id/smiley_super_happy"/>
+                android:src="@drawable/smiley_happy" />
 
-            <ImageView
-                android:id="@+id/smiley_normal"
+            <ImageButton
+                android:id="@+id/normalButton"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:layout_below="@+id/happyButton"
                 android:background="@color/cornflower_blue_65"
+                android:contentDescription="@string/app_name"
                 android:padding="30dp"
-                android:src="@drawable/smiley_normal"
-                android:layout_below="@+id/smiley_happy"/>
+                android:src="@drawable/smiley_normal" />
 
-            <ImageView
-                android:id="@+id/smiley_disappointed"
+            <ImageButton
+                android:id="@+id/disappointedButton"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:layout_below="@+id/normalButton"
                 android:background="@color/warm_grey"
+                android:contentDescription="@string/app_name"
                 android:padding="30dp"
-                android:src="@drawable/smiley_disappointed"
-                android:layout_below="@+id/smiley_normal"/>
+                android:src="@drawable/smiley_disappointed" />
 
-            <ImageView
-                android:id="@+id/smiley_sad"
+            <ImageButton
+                android:id="@+id/sadButton"
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
+                android:layout_below="@+id/disappointedButton"
                 android:background="@color/faded_red"
+                android:contentDescription="@string/app_name"
                 android:padding="30dp"
-                android:src="@drawable/smiley_sad"
-                android:layout_below="@+id/smiley_disappointed"/>
+                android:src="@drawable/smiley_sad" />
+            <!-- End of different moods -->
+            <!-- Borders for when a mood is selected -->
+            <TextView
+                android:id="@+id/superHappyBorder"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/happyBorder"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_below="@+id/superHappyButton"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/normalBorder"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_below="@+id/happyButton"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/disappointedBorder"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_below="@+id/normalButton"
+                android:background="@drawable/border" />
+
+            <TextView
+                android:id="@+id/sadBorder"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:layout_below="@+id/disappointedButton"
+                android:background="@drawable/border" />
+            <!-- End of borders -->
+            <!-- Add notes buttons -->
+
+            <ImageButton
+                android:id="@+id/superHappyTextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/superHappyButton"
+                android:layout_alignLeft="@id/superHappyButton"
+                android:layout_alignStart="@+id/superHappyButton"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginStart="35dp"
+                android:background="@color/banana_yellow"
+                android:clickable="true"
+                android:contentDescription="@string/app_name"
+                android:focusable="true"
+                android:src="@drawable/ic_note_add_black" />
+
+            <ImageButton
+                android:id="@+id/happyTextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignBottom="@+id/happyButton"
+                android:layout_alignLeft="@id/happyButton"
+                android:layout_alignStart="@+id/happyButton"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/light_sage"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_note_add_black" />
+
+            <ImageButton
+                android:id="@+id/normalTextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignBottom="@+id/normalButton"
+                android:layout_alignLeft="@id/normalButton"
+                android:layout_alignStart="@+id/normalButton"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/cornflower_blue_65"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_note_add_black" />
+
+            <ImageButton
+                android:id="@+id/disappointedTextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignBottom="@+id/disappointedButton"
+                android:layout_alignLeft="@id/disappointedButton"
+                android:layout_alignStart="@+id/disappointedButton"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/warm_grey"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_note_add_black" />
+
+            <ImageButton
+                android:id="@+id/sadTextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignBottom="@+id/sadButton"
+                android:layout_alignLeft="@id/sadButton"
+                android:layout_alignStart="@+id/sadButton"
+                android:layout_marginBottom="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@color/faded_red"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_note_add_black" />
+            <!-- End of notes buttons -->
+            <!-- Main history button -->
+            <ImageButton
+                android:id="@+id/historyButton"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_alignBottom="@+id/superHappyButton"
+                android:layout_alignEnd="@id/superHappyButton"
+                android:layout_alignRight="@id/superHappyButton"
+                android:layout_marginBottom="40dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/banana_yellow"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_history_black" />
+            <!-- End of history button -->
 
 
         </RelativeLayout>
