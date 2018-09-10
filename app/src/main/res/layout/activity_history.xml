@@ -5,131 +5,135 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".History">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/moodView4"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/banana_yellow"
-        android:text="@string/today"
-        />
-    <TextView
-        android:id="@+id/moodView3"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/light_sage"
-        android:layout_marginRight="77dp"
-        android:layout_marginEnd="77dp"
-        android:text="@string/today"
-        />
-    <TextView
-        android:id="@+id/moodView2"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="154dp"
-        android:layout_marginEnd="154dp"
-        android:background="@color/cornflower_blue_65"
-        android:text="@string/today"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="0dp">
 
-        />
-   <TextView
-        android:id="@+id/moodView1"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/warm_grey"
-       android:layout_marginRight="231dp"
-       android:layout_marginEnd="231dp"
-       android:text="@string/today"
-       />
-    <TextView
-        android:id="@+id/moodView0"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginRight="308dp"
-        android:layout_marginEnd="308dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/faded_red"
-        />
+        <ListView
+            android:id="@+id/listMood"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:text="@string/today"
-        android:layout_alignParentBottom="true"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#000000"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/moodView4"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/banana_yellow"
+            android:text="@string/today"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/moodView3"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="77dp"
+            android:layout_marginRight="77dp"
+            android:background="@color/light_sage"
+            android:text="@string/today"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/moodView2"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="154dp"
+            android:layout_marginRight="154dp"
+            android:background="@color/cornflower_blue_65"
+            android:text="@string/today"
+            android:textSize="15sp"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:id="@+id/moodView1"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="231dp"
+            android:layout_marginRight="231dp"
+            android:background="@color/warm_grey"
+            android:text="@string/today"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/moodView0"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="308dp"
+            android:layout_marginRight="308dp"
+            android:background="@color/faded_red"
+            android:text="@string/today"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/superHappyComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/moodView4"
+            android:layout_alignEnd="@+id/moodView4"
+            android:layout_alignRight="@+id/moodView4"
+            android:layout_margin="15dp"
+            android:background="@color/banana_yellow"
+            android:src="@drawable/ic_comment_black_48px" />
+
+        <ImageButton
+            android:id="@+id/happyComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/moodView3"
+            android:layout_alignEnd="@+id/moodView3"
+            android:layout_alignRight="@+id/moodView3"
+            android:layout_margin="15dp"
+            android:background="@color/light_sage"
+            android:src="@drawable/ic_comment_black_48px" />
+
+        <ImageButton
+            android:id="@+id/normalComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/moodView2"
+            android:layout_alignEnd="@+id/moodView2"
+            android:layout_alignRight="@+id/moodView2"
+            android:layout_margin="15dp"
+            android:background="@color/cornflower_blue_65"
+            android:src="@drawable/ic_comment_black_48px" />
+
+        <ImageButton
+            android:id="@+id/disappointedComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/moodView1"
+            android:layout_alignEnd="@+id/moodView1"
+            android:layout_alignRight="@+id/moodView1"
+            android:layout_margin="15dp"
+            android:background="@color/warm_grey"
+            android:src="@drawable/ic_comment_black_48px" />
+
+        <ImageButton
+            android:id="@+id/sadComment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/moodView0"
+            android:layout_alignEnd="@+id/moodView0"
+            android:layout_alignRight="@+id/moodView0"
+            android:layout_margin="15dp"
+            android:background="@color/faded_red"
+            android:src="@drawable/ic_comment_black_48px" />
+
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

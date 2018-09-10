@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".History"></activity>
+        <receiver android:name=".Notification_receiver"/>
     </application>
 
 </manifest>

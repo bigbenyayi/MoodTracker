@@ -14,7 +14,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+            <ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/view_flipper"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".HowToUseActivity"
+                tools:ignore="UselessParent">
+                <ImageButton
+                    android:id="@+id/imageHowToUse"
+                    android:contentDescription="@string/app_name"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/smiley_super_happy" />
+            </ViewFlipper>
+
+
             <!-- All the different moods -->
+            <!--
             <ImageButton
                 android:id="@+id/superHappyButton"
                 android:layout_width="match_parent"
@@ -27,6 +44,12 @@
                 android:padding="30dp"
                 android:src="@drawable/smiley_super_happy" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tv"
+                android:textSize="40sp"
+                />
             <ImageButton
                 android:id="@+id/happyButton"
                 android:layout_width="match_parent"
@@ -65,9 +88,10 @@
                 android:background="@color/faded_red"
                 android:contentDescription="@string/app_name"
                 android:padding="30dp"
-                android:src="@drawable/smiley_sad" />
+                android:src="@drawable/smiley_sad" /> -->
             <!-- End of different moods -->
             <!-- Borders for when a mood is selected -->
+            <!--
             <TextView
                 android:id="@+id/superHappyBorder"
                 android:layout_width="match_parent"
@@ -100,10 +124,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="600dp"
                 android:layout_below="@+id/disappointedButton"
-                android:background="@drawable/border" />
+                android:background="@drawable/border" /> -->
             <!-- End of borders -->
             <!-- Add notes buttons -->
-
+<!--
             <ImageButton
                 android:id="@+id/superHappyTextButton"
                 android:layout_width="wrap_content"
@@ -174,9 +198,11 @@
                 android:layout_marginStart="20dp"
                 android:background="@color/faded_red"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_note_add_black" />
+                android:src="@drawable/ic_note_add_black" /> -->
             <!-- End of notes buttons -->
             <!-- Main history button -->
+
+            <!--
             <ImageButton
                 android:id="@+id/historyButton"
                 android:layout_width="100dp"
@@ -189,8 +215,10 @@
                 android:layout_marginRight="15dp"
                 android:background="@color/banana_yellow"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_history_black" />
+                android:src="@drawable/ic_history_black" /> -->
             <!-- End of history button -->
+
+
 
 
         </RelativeLayout>
