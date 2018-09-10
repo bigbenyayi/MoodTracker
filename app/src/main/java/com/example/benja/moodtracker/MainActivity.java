@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         final GestureDetector gdt = new GestureDetector(new GestureListener());
 
+        //You set a 'new' TouchListener to the imageView below. What about the gdt that you created above? 
+        //You simply need to provide that gdt to the listener below instead of creating a new one :)
         imageView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
