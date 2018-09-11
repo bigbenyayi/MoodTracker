@@ -62,7 +62,7 @@ public class History extends AppCompatActivity {
         int mood = intent.getIntExtra(MainActivity.EXTRA_MOOD, 2);
 
         //Distinguishing which mood has been selected
-        if (mood == 4) {
+        if (mood == 0) {
             moodView4.setVisibility(View.VISIBLE);
             if (!(comment.equals(""))) {
                 superHappyComment.setVisibility(View.VISIBLE);
@@ -71,7 +71,7 @@ public class History extends AppCompatActivity {
                 disappointedComment.setVisibility(View.INVISIBLE);
                 sadComment.setVisibility(View.INVISIBLE);
             }
-        } else if (mood == 3) {
+        } else if (mood == 1) {
             moodView3.setVisibility(View.VISIBLE);
             if (!(comment.equals(""))) {
                 superHappyComment.setVisibility(View.INVISIBLE);
@@ -89,7 +89,7 @@ public class History extends AppCompatActivity {
                 disappointedComment.setVisibility(View.INVISIBLE);
                 sadComment.setVisibility(View.INVISIBLE);
             }
-        } else if (mood == 1) {
+        } else if (mood == 3) {
             moodView1.setVisibility(View.VISIBLE);
             if (!(comment.equals(""))) {
                 superHappyComment.setVisibility(View.INVISIBLE);
@@ -98,7 +98,7 @@ public class History extends AppCompatActivity {
                 disappointedComment.setVisibility(View.VISIBLE);
                 sadComment.setVisibility(View.INVISIBLE);
             }
-        } else if (mood == 0) {
+        } else if (mood == 4) {
             moodView0.setVisibility(View.VISIBLE);
             if (!(comment.equals(""))) {
                 superHappyComment.setVisibility(View.INVISIBLE);
