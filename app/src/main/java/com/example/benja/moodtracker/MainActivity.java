@@ -107,85 +107,85 @@ public class MainActivity extends AppCompatActivity {
 
 */
     }
-        View.OnTouchListener touchListener = new View.OnTouchListener() {
-@SuppressLint("ClickableViewAccessibility")
-@Override
-public boolean onTouch(View view, MotionEvent motionEvent) {
-        return mDetector.onTouchEvent(motionEvent);
+
+    View.OnTouchListener touchListener = new View.OnTouchListener() {
+        @SuppressLint("ClickableViewAccessibility")
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            return mDetector.onTouchEvent(motionEvent);
         }
-        };
+    };
 
 
-private static final int SWIPE_MIN_DISTANCE = 120;
-private static final int SWIPE_THRESHOLD_VELOCITY = 200;
-        int mood =0;
+    private static final int SWIPE_MIN_DISTANCE = 120;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    int mood = 0;
 
-private class GestureListener extends GestureDetector.SimpleOnGestureListener {
-    @Override
-    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+    private class GestureListener extends GestureDetector.SimpleOnGestureListener {
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
 
-        if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+            if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
 
-            mood++;
+                mood++;
 
-            if(mood==5) //5th is to many, we only have 5 pictures
-            {
-                mood=4; //Stops when last ImageButtons on view
+                if (mood == 5) //5th is to many, we only have 5 pictures
+                {
+                    mood = 4; //Stops when last ImageButtons on view
+                }
+
+                changeImage();
+
+
+                return false; // Bottom to top
+            } else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+                mood--;
+
+                if (mood == -1)//too far
+                {
+                    mood = 0; //stops when first image on view
+                }
+
+                changeImage();
+
+                return false; // Top to bottom
             }
+            return false;
+        }
 
-            changeImage();
+        void changeImage() {
+            ImageButton imageButton = findViewById(R.id.imageHowToUse);
 
+            switch (mood) {
 
-            return false; // Bottom to top
-        } else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
-            mood--;
+                case 0:
+                    imageButton.setImageResource(R.drawable.smiley_super_happy);
+                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.banana_yellow));
 
-            if(mood==-1)//too far
-            {
-                mood=0; //stops when first image on view
+                    break;
+
+                case 1:
+                    imageButton.setImageResource(R.drawable.smiley_happy);
+                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.light_sage));
+                    break;
+
+                case 2:
+                    imageButton.setImageResource(R.drawable.smiley_normal);
+                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.cornflower_blue_65));
+                    break;
+
+                case 3:
+                    imageButton.setImageResource(R.drawable.smiley_disappointed);
+                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.warm_grey));
+                    break;
+
+                case 4:
+                    imageButton.setImageResource(R.drawable.smiley_sad);
+                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.faded_red));
+                    break;
             }
-
-            changeImage();
-
-            return false; // Top to bottom
-        }
-        return false;
-    }
-
-    void changeImage()
-    {
-        ImageButton imageButton = findViewById(R.id.imageHowToUse);
-
-        switch(mood)
-        {
-
-            case 0:
-                imageButton.setImageResource(R.drawable.smiley_super_happy);
-                imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.banana_yellow));
-
-                break;
-
-            case 1:
-                imageButton.setImageResource(R.drawable.smiley_happy);
-                imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.light_sage));
-                break;
-
-            case 2:
-                imageButton.setImageResource(R.drawable.smiley_normal);
-                imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.cornflower_blue_65));
-                break;
-
-            case 3:
-                imageButton.setImageResource(R.drawable.smiley_disappointed);
-                imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.warm_grey));
-                break;
-
-            case 4:
-                imageButton.setImageResource(R.drawable.smiley_sad);
-                imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.faded_red));
-                break;
         }
     }
-}}
+}
 
 
