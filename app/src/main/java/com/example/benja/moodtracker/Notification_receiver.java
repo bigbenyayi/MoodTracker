@@ -10,37 +10,29 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static android.content.Context.MODE_PRIVATE;
-import static com.example.benja.moodtracker.MainActivity.PREF_KEY_MOOD;
+import static com.example.benja.moodtracker.MainActivity.PREF_KEY_MOOD0;
 
 public class Notification_receiver extends BroadcastReceiver {
     public static final String PREF_KEY_COMMENT = "PREFERENCE_KEY_COMMENT";
     private Context mContext;
 
 
-
     @Override
     public void onReceive(Context context, Intent intent) {
         this.mContext = context;
+        ArrayList listMood = new ArrayList();
 
         SharedPreferences mPreferences = context.getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
-        final int mood = (mPreferences.getInt(PREF_KEY_MOOD, 0));
+        int mood = (mPreferences.getInt(PREF_KEY_MOOD0, 2));
         String moodString = Integer.toString(mood);
+        listMood.add(moodString);
+        mood = 2;
 
         Log.d("emma", moodString);
-
-
-
-
-
-
-       //Log.d("asdf","It worked my time machine worked");
-      /*  TextView linearLayout =  (TextView) (Activity)context.find(R.id.moodView4);
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)linearLayout.getLayoutParams();
-        params.setMargins(0, 0, 0, 10);
-        linearLayout.setLayoutParams(params);
-
-        linearLayout.requestLayout(); */
 
 
     }

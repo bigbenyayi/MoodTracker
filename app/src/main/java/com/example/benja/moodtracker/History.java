@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class History extends AppCompatActivity {
-    public static final String PREF_KEY_COMMENT = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT0 = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT1 = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT2 = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT3 = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT4 = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT5 = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COMMENT6 = "PREFERENCE_KEY_COMMENT";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +37,34 @@ public class History extends AppCompatActivity {
 
 
         ListView listMood = findViewById(R.id.listMood);
-        listMood.setAdapter(new MyCustomAdapter(this));
-
+        ArrayList<Mood> moodsList = new ArrayList<>();
+        moodsList.add(new Mood("message", 43));
+        listMood.setAdapter(new MyCustomAdapter(this, moodsList));
 
     }
 
+
     public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         private Context context;
+        private ArrayList<Mood> moodsList;
 
-        MyCustomAdapter(Context context) {
+
+        MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
             this.context = context;
+            this.moodsList = moodsList;
         }
 
         @Override
         public int getCount() {
-            return 1;
+            return moodsList.size();
         }
+
+        Object variable;
 
         @Override
         public Object getItem(int pos) {
+            variable = getItem(1);
+
             return pos;
         }
 
@@ -60,142 +80,47 @@ public class History extends AppCompatActivity {
             View view = convertView;
             if (view == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                assert inflater != null;
                 view = inflater.inflate(R.layout.customlayout, null);
             }
+            Mood mood = moodsList.get(position);
+            String moodMessage = mood.getMoodMessage();
+            Integer moodColor = moodsList.get(position).getMoodColor();
+            TextView moodTextView = view.findViewById(R.id.moodTextView);
+            ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
 
-
-            //Handle buttons and add onClickListeners
-            ImageButton superHappyButton = view.findViewById(R.id.superHappyComment4);
-            ImageButton happyButton = view.findViewById(R.id.happyComment3);
-            ImageButton normalButton = view.findViewById(R.id.normalComment2);
-            ImageButton disappointedButton = view.findViewById(R.id.disappointedComment1);
-            ImageButton sadButton = view.findViewById(R.id.sadComment0);
-
+            //Retrieving everything from SP
             SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
-            final String comment = (mPreferences.getString(PREF_KEY_COMMENT, ""));
+            final String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, ""));
+            final String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, ""));
+            final String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, ""));
+            final String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, ""));
+            final String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, ""));
+            final String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, ""));
+            final String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, ""));
+
+            Toast.makeText(History.this, comment0, Toast.LENGTH_LONG).show();
+            Toast.makeText(History.this, comment1, Toast.LENGTH_LONG).show();
+            Toast.makeText(History.this, comment2, Toast.LENGTH_LONG).show();
+            Toast.makeText(History.this, comment3, Toast.LENGTH_LONG).show();
 
 
-            superHappyButton.setOnClickListener(new View.OnClickListener() {
+
+        //Onclick listneer + toast
+            moodImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Toast.makeText(History.this, comment, Toast.LENGTH_LONG).show();
-                    //do something
-                    notifyDataSetChanged();
-                }
-            });
-            happyButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(History.this, comment, Toast.LENGTH_LONG).show();
-                    //do something
-                    notifyDataSetChanged();
-
-                }
-            });
-            normalButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(History.this, comment, Toast.LENGTH_LONG).show();
-                    //do something
-                    notifyDataSetChanged();
-
-                }
-            });
-            disappointedButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(History.this, comment, Toast.LENGTH_LONG).show();
-                    //do something
-                    notifyDataSetChanged();
-
-                }
-            });
-            sadButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(History.this, comment, Toast.LENGTH_LONG).show();
-                    //do something
-                    notifyDataSetChanged();
-
-                }
+                public void onClick(View view) {
+                    Toast.makeText(History.this, comment0, Toast.LENGTH_LONG).show();                }
             });
 
-            //Retrieving the different TextViews that will display depending on the != moods
-            TextView moodView4 = view.findViewById(R.id.moodView44);
-            TextView moodView3 = view.findViewById(R.id.moodView33);
-            TextView moodView2 = view.findViewById(R.id.moodView22);
-            TextView moodView1 = view.findViewById(R.id.moodView11);
-            TextView moodView0 = view.findViewById(R.id.moodView00);
-
-            moodView0.setVisibility(View.INVISIBLE);
-            moodView1.setVisibility(View.INVISIBLE);
-            moodView2.setVisibility(View.INVISIBLE);
-            moodView3.setVisibility(View.INVISIBLE);
-            moodView4.setVisibility(View.INVISIBLE);
-
-            //Retrieving the comment icons which will be displayed if a comment has been input
-            @SuppressLint("CutPasteId") ImageButton superHappyComment = view.findViewById(R.id.superHappyComment4);
-            @SuppressLint("CutPasteId") ImageButton happyComment = view.findViewById(R.id.happyComment3);
-            @SuppressLint("CutPasteId") ImageButton normalComment = view.findViewById(R.id.normalComment2);
-            @SuppressLint("CutPasteId") ImageButton disappointedComment = view.findViewById(R.id.disappointedComment1);
-            @SuppressLint("CutPasteId") ImageButton sadComment = view.findViewById(R.id.sadComment0);
-
-            Intent intent = getIntent();
-            int mood = intent.getIntExtra(MainActivity.EXTRA_MOOD, 2);
-
-            //Distinguishing which mood has been selected
-            if (mood == 0) {
-                moodView4.setVisibility(View.VISIBLE);
-                if (!(comment.equals(""))) {
-                    superHappyComment.setVisibility(View.VISIBLE);
-                    happyComment.setVisibility(View.INVISIBLE);
-                    normalComment.setVisibility(View.INVISIBLE);
-                    disappointedComment.setVisibility(View.INVISIBLE);
-                    sadComment.setVisibility(View.INVISIBLE);
-                }
-            } else if (mood == 1) {
-                moodView3.setVisibility(View.VISIBLE);
-                if (!(comment.equals(""))) {
-                    superHappyComment.setVisibility(View.INVISIBLE);
-                    happyComment.setVisibility(View.VISIBLE);
-                    normalComment.setVisibility(View.INVISIBLE);
-                    disappointedComment.setVisibility(View.INVISIBLE);
-                    sadComment.setVisibility(View.INVISIBLE);
-                }
-            } else if (mood == 2) {
-                moodView2.setVisibility(View.VISIBLE);
-                if (!(comment.equals(""))) {
-                    superHappyComment.setVisibility(View.INVISIBLE);
-                    happyComment.setVisibility(View.INVISIBLE);
-                    normalComment.setVisibility(View.VISIBLE);
-                    disappointedComment.setVisibility(View.INVISIBLE);
-                    sadComment.setVisibility(View.INVISIBLE);
-                }
-            } else if (mood == 3) {
-                moodView1.setVisibility(View.VISIBLE);
-                if (!(comment.equals(""))) {
-                    superHappyComment.setVisibility(View.INVISIBLE);
-                    happyComment.setVisibility(View.INVISIBLE);
-                    normalComment.setVisibility(View.INVISIBLE);
-                    disappointedComment.setVisibility(View.VISIBLE);
-                    sadComment.setVisibility(View.INVISIBLE);
-                }
-            } else if (mood == 4) {
-                moodView0.setVisibility(View.VISIBLE);
-                if (!(comment.equals(""))) {
-                    superHappyComment.setVisibility(View.INVISIBLE);
-                    happyComment.setVisibility(View.INVISIBLE);
-                    normalComment.setVisibility(View.INVISIBLE);
-                    disappointedComment.setVisibility(View.INVISIBLE);
-                    sadComment.setVisibility(View.VISIBLE);
-                }
-            }
 
 
-            return view;
+
+            //assign text to the textViews
+
+            moodTextView.setBackgroundColor(moodColor);
+
+            return null;
         }
-
     }
 }
 
