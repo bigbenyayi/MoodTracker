@@ -20,7 +20,7 @@ public class Mood {
         this.moodColor = moodColor;
     }
 
-    public Mood(String moodMessage, Integer moodColor) {
+    Mood(String moodMessage, Integer moodColor) {
         this.moodMessage = moodMessage;
         this.moodColor = moodColor;
     }

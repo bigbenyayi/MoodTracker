@@ -24,12 +24,12 @@ public class Notification_receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         this.mContext = context;
-        ArrayList listMood = new ArrayList();
+        //  ArrayList listMood = new ArrayList();
 
         SharedPreferences mPreferences = context.getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
         int mood = (mPreferences.getInt(PREF_KEY_MOOD0, 2));
         String moodString = Integer.toString(mood);
-        listMood.add(moodString);
+        // listMood.add(moodString);
         mood = 2;
 
         Log.d("emma", moodString);
@@ -37,3 +37,4 @@ public class Notification_receiver extends BroadcastReceiver {
 
     }
 }
+
