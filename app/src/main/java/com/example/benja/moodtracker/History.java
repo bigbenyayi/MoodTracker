@@ -105,24 +105,24 @@ public class History extends AppCompatActivity {
 
             //Retrieving the comments from SP
             SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
-            final String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, ""));
-            final String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, ""));
-            final String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, ""));
-            final String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, ""));
-            final String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, ""));
-            final String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, ""));
-            final String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, ""));
-/*
-            //Retrieving the colors from SP
-            String color0 = (mPreferences.getInt(PREF_KEY_COLOR0, ""));
-            String color1 = (mPreferences.getInt(PREF_KEY_COLOR1, ""));
-            String color2 = (mPreferences.getInt(PREF_KEY_COLOR2, ""));
-            String color3 = (mPreferences.getInt(PREF_KEY_COLOR3, ""));
-            String color4 = (mPreferences.getInt(PREF_KEY_COLOR4, ""));
-            String color5 = (mPreferences.getInt(PREF_KEY_COLOR5, ""));
-            String color6 = (mPreferences.getInt("PREFERENCE_KEY_COLOR6", ""));
+            final String comment0 = (mPreferences.getString("PREFERENCE_KEY_COMMENT0", ""));
+            final String comment1 = (mPreferences.getString("PREFERENCE_KEY_COMMENT1", ""));
+            final String comment2 = (mPreferences.getString("PREFERENCE_KEY_COMMENT2", ""));
+            final String comment3 = (mPreferences.getString("PREFERENCE_KEY_COMMENT3", ""));
+            final String comment4 = (mPreferences.getString("PREFERENCE_KEY_COMMENT4", ""));
+            final String comment5 = (mPreferences.getString("PREFERENCE_KEY_COMMENT5", ""));
+            final String comment6 = (mPreferences.getString("PREFERENCE_KEY_COMMENT6", ""));
 
-*/
+            //Retrieving the colors from SP
+            int color0 = (mPreferences.getInt("PREFERENCE_KEY_COLOR0", 0));
+            int color1 = (mPreferences.getInt("PREFERENCE_KEY_COLOR1", 0));
+            int color2 = (mPreferences.getInt("PREFERENCE_KEY_COLOR2", 0));
+            int color3 = (mPreferences.getInt("PREFERENCE_KEY_COLOR3", 0));
+            int color4 = (mPreferences.getInt("PREFERENCE_KEY_COLOR4", 0));
+            int color5 = (mPreferences.getInt("PREFERENCE_KEY_COLOR5", 0));
+            int color6 = (mPreferences.getInt("PREFERENCE_KEY_COLOR6", 0));
+
+            //Checking if I retrieved it properly yall
             Toast.makeText(History.this, comment0, Toast.LENGTH_LONG).show();
             Toast.makeText(History.this, comment1, Toast.LENGTH_LONG).show();
             Toast.makeText(History.this, comment2, Toast.LENGTH_LONG).show();
@@ -133,7 +133,7 @@ public class History extends AppCompatActivity {
 
 
 
-        //Onclick listneer + toast
+        //Onclick listener + toast
             moodImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
