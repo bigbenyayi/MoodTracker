@@ -48,7 +48,6 @@ public class History extends AppCompatActivity {
 
         ListView listMood = findViewById(R.id.listMood);
         ArrayList<Mood> moodsList = new ArrayList<>();
-        moodsList.add(new Mood("message", 43));
         listMood.setAdapter(new MyCustomAdapter(this, moodsList));
 
     }
@@ -130,6 +129,16 @@ public class History extends AppCompatActivity {
             Toast.makeText(History.this, comment4, Toast.LENGTH_LONG).show();
             Toast.makeText(History.this, comment5, Toast.LENGTH_LONG).show();
             Toast.makeText(History.this, comment6, Toast.LENGTH_LONG).show();
+            Toast.makeText(History.this, color0, Toast.LENGTH_LONG).show();
+
+            //Adding all that in an array
+            moodsList.add(new Mood(comment0, color0));
+            moodsList.add(new Mood(comment2, color2));
+            moodsList.add(new Mood(comment3, color3));
+            moodsList.add(new Mood(comment4, color4));
+            moodsList.add(new Mood(comment5, color5));
+            moodsList.add(new Mood(comment6, color6));
+
 
 
 
