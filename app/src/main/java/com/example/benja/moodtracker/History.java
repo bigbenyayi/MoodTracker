@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -44,11 +45,43 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-
         ListView listMood = findViewById(R.id.listMood);
         ArrayList<Mood> moodsList = new ArrayList<>();
         listMood.setAdapter(new MyCustomAdapter(this, moodsList));
 
+        //Retrieving the comments from SP
+        SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
+
+        String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, "Not found!"));
+        String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, "Not found!"));
+        String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, "Not found!"));
+        String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, "Not found!"));
+        String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, "Not found!"));
+        String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, "Not found!"));
+        String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, "Not found!"));
+
+        //Retrieving the colors from SP
+        int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 0));
+        int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 0));
+        int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 0));
+        int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 0));
+        int color4 = (mPreferences.getInt(PREF_KEY_COLOR4, 0));
+        int color5 = (mPreferences.getInt(PREF_KEY_COLOR5, 0));
+        int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 0));
+
+
+        Log.d("asdfi", Integer.toString(color0));
+        Log.d("asdf", comment0);
+
+
+        //Adding all that in an array
+        moodsList.add(new Mood(comment0, color0));
+        moodsList.add(new Mood(comment1, color1));
+        moodsList.add(new Mood(comment2, color2));
+        moodsList.add(new Mood(comment3, color3));
+        moodsList.add(new Mood(comment4, color4));
+        moodsList.add(new Mood(comment5, color5));
+        moodsList.add(new Mood(comment6, color6));
 
     }
 
@@ -65,7 +98,7 @@ public class History extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 1;
+            return 0;
         }
 
         Object variable;
@@ -74,7 +107,7 @@ public class History extends AppCompatActivity {
         public Object getItem(int pos) {
             variable = getItem(pos);
 
-            return pos;
+            return variable;
         }
 
         @Override
@@ -96,43 +129,11 @@ public class History extends AppCompatActivity {
             }
             // Mood mood = moodsList.get(position);
             // String moodMessage = mood.getMoodMessage();
-           //
+            //
             // Integer moodColor = moodsList.get(position).getMoodColor();
             assert view != null;
             TextView moodTextView = view.findViewById(R.id.moodTextView);
             ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
-
-            //Retrieving the comments from SP
-            SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
-            final String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, ""));
-            final String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, ""));
-            final String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, ""));
-            final String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, ""));
-            final String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, ""));
-            final String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, ""));
-            final String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, ""));
-
-            //Retrieving the colors from SP
-            int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 0));
-            int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 0));
-            int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 0));
-            int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 0));
-            int color4 = (mPreferences.getInt(PREF_KEY_COLOR4, 0));
-            int color5 = (mPreferences.getInt(PREF_KEY_COLOR5, 0));
-            int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 0));
-
-            Log.d("asdf", comment1);
-            Log.d("asdf","HMMMMM");
-
-
-            //Adding all that in an array
-            moodsList.add(new Mood(comment0, color0));
-            moodsList.add(new Mood(comment1, color1));
-            moodsList.add(new Mood(comment2, color2));
-            moodsList.add(new Mood(comment3, color3));
-            moodsList.add(new Mood(comment4, color4));
-            moodsList.add(new Mood(comment5, color5));
-            moodsList.add(new Mood(comment6, color6));
 
 
       /*  //Onclick listener + toast
