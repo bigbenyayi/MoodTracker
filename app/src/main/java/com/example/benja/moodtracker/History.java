@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListAdapter;
@@ -40,6 +42,8 @@ public class History extends AppCompatActivity {
     public static final String PREF_KEY_COLOR5 = "PREFERENCE_KEY_COLOR5";
     public static final String PREF_KEY_COLOR6 = "PREFERENCE_KEY_COLOR6";
 
+    private ArrayList<Mood> moodsList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,45 +51,72 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         ListView listMood = findViewById(R.id.listMood);
-        ArrayList<Mood> moodsList = new ArrayList<>();
         listMood.setAdapter(new MyCustomAdapter(this, moodsList));
+
+        SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
+
+        //Retrieving the comments from SP
+        final String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, "Not found!"));
+        String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, "Not found!"));
+        String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, "Not found!"));
+        String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, "Not found!"));
+        String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, "Not found!"));
+        String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, "Not found!"));
+        String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, "Not found!"));
+
+        //Retrieving the colors from SP
+        int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 0));
+        int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 0));
+        int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 0));
+        int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 0));
+        int color4 = (mPreferences.getInt(PREF_KEY_COLOR4, 0));
+        int color5 = (mPreferences.getInt(PREF_KEY_COLOR5, 0));
+        int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 0));
+
+
+        //Adding all that in an array
+        moodsList.add(new Mood(comment0, color0));
+        moodsList.add(new Mood(comment1, color1));
+        moodsList.add(new Mood(comment2, color2));
+        moodsList.add(new Mood(comment3, color3));
+        moodsList.add(new Mood(comment4, color4));
+        moodsList.add(new Mood(comment5, color5));
+        moodsList.add(new Mood(comment6, color6));
+
+
+        //Onclick listener + toast
+    /*    moodImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(History.this, comment0, Toast.LENGTH_LONG).show();
+            }
+        });
+*/
+
+        //assign text to the textViews
+       // moodTextView.setBackgroundColor(color0);
+
 
 
     }
 
 
-    public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
+    public class MyCustomAdapter extends ArrayAdapter {
         private Context context;
         private ArrayList<Mood> moodsList;
 
 
         MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
+            super(context, R.layout.customlayout);
             this.context = context;
             this.moodsList = moodsList;
         }
 
+
+        @SuppressLint("InflateParams")
+        @NonNull
         @Override
-        public int getCount() {
-            return moodsList.size();
-        }
-
-        Object variable;
-
-        @Override
-        public Object getItem(int pos) {
-            variable = getItem(pos);
-
-            return variable;
-        }
-
-        @Override
-        public long getItemId(int pos) {
-            return pos;
-            //return 0 if list items do not have an Id variable.
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
             View view = convertView;
             if (view == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -103,54 +134,6 @@ public class History extends AppCompatActivity {
             TextView moodTextView = view.findViewById(R.id.moodTextView);
             ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
 
-            SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
-
-            //Retrieving the comments from SP
-            String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, "Not found!"));
-            String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, "Not found!"));
-            String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, "Not found!"));
-            String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, "Not found!"));
-            String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, "Not found!"));
-            String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, "Not found!"));
-            String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, "Not found!"));
-
-            //Retrieving the colors from SP
-            int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 0));
-            int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 0));
-            int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 0));
-            int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 0));
-            int color4 = (mPreferences.getInt(PREF_KEY_COLOR4, 0));
-            int color5 = (mPreferences.getInt(PREF_KEY_COLOR5, 0));
-            int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 0));
-
-
-            Log.d("mhsc", Integer.toString(color0));
-            Log.d("mhsc", comment0);
-
-
-            //Adding all that in an array
-            moodsList.add(new Mood(comment0, color0));
-            moodsList.add(new Mood(comment1, color1));
-            moodsList.add(new Mood(comment2, color2));
-            moodsList.add(new Mood(comment3, color3));
-            moodsList.add(new Mood(comment4, color4));
-            moodsList.add(new Mood(comment5, color5));
-            moodsList.add(new Mood(comment6, color6));
-
-      /*  //Onclick listener + toast
-        moodImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-        Toast.makeText(History.this, comment0, Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-        assign text to the textViews
-
-        moodTextView.setBackgroundColor(moodColor);
-
-*/
             return null;
         }
 
