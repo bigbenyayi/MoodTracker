@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREF_KEY_COMMENT6 = "PREFERENCE_KEY_COMMENT6";
     public static final String BUNDLE_EXTRA_COMMENT = History.class.getCanonicalName().concat("BUNDLE_EXTRA_COMMENT");
     public static final String BUNDLE_EXTRA_MOOD = Notification_receiver.class.getCanonicalName().concat("BUNDLE_EXTRA_COMMENT");
-    public List<Integer> listOfMoods = new ArrayList<>();
     private SharedPreferences mPreferences;
 
 
@@ -129,9 +128,9 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY, 11);
-        calendar.set(Calendar.MINUTE, 39);
-        calendar.set(Calendar.SECOND, 10);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
 
         Intent intent = new Intent(getApplicationContext(), Notification_receiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
@@ -184,105 +183,52 @@ public class MainActivity extends AppCompatActivity {
 
 
                 return false; // Top to bottom
+
             }
             return false;
+
         }
 
         void changeImage() {
             ImageButton imageButton = findViewById(R.id.imageHowToUse);
+            SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
 
             switch (mood) {
 
                 case 0:
                     imageButton.setImageResource(R.drawable.smiley_super_happy);
                     imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.banana_yellow));
-                    if (listOfMoods.size() == 7) {
-                        listOfMoods.set(0, listOfMoods.get(1));
-                        listOfMoods.set(1, listOfMoods.get(2));
-                        listOfMoods.set(2, listOfMoods.get(3));
-                        listOfMoods.set(3, listOfMoods.get(4));
-                        listOfMoods.set(4, listOfMoods.get(5));
-                        listOfMoods.set(5, listOfMoods.get(6));
-                        listOfMoods.set(6, R.color.banana_yellow);
-                    } else {
-                        listOfMoods.add(R.color.banana_yellow);
-                    }
+
                     break;
 
                 case 1:
                     imageButton.setImageResource(R.drawable.smiley_happy);
                     imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.light_sage));
-                    if (listOfMoods.size() == 7) {
-                        listOfMoods.set(0, listOfMoods.get(1));
-                        listOfMoods.set(1, listOfMoods.get(2));
-                        listOfMoods.set(2, listOfMoods.get(3));
-                        listOfMoods.set(3, listOfMoods.get(4));
-                        listOfMoods.set(4, listOfMoods.get(5));
-                        listOfMoods.set(5, listOfMoods.get(6));
-                        listOfMoods.set(6, R.color.light_sage);
-                    } else {
-                        listOfMoods.add(R.color.light_sage);
-                    }
 
                     break;
 
                 case 2:
                     imageButton.setImageResource(R.drawable.smiley_normal);
                     imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.cornflower_blue_65));
-                    if (listOfMoods.size() == 7) {
-                        listOfMoods.set(0, listOfMoods.get(1));
-                        listOfMoods.set(1, listOfMoods.get(2));
-                        listOfMoods.set(2, listOfMoods.get(3));
-                        listOfMoods.set(3, listOfMoods.get(4));
-                        listOfMoods.set(4, listOfMoods.get(5));
-                        listOfMoods.set(5, listOfMoods.get(6));
-                        listOfMoods.set(6, R.color.cornflower_blue_65);
-                    } else {
-                        listOfMoods.add(R.color.cornflower_blue_65);
-                    }
 
                     break;
 
                 case 3:
                     imageButton.setImageResource(R.drawable.smiley_disappointed);
                     imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.warm_grey));
-                    if (listOfMoods.size() == 7) {
-                        listOfMoods.set(0, listOfMoods.get(1));
-                        listOfMoods.set(1, listOfMoods.get(2));
-                        listOfMoods.set(2, listOfMoods.get(3));
-                        listOfMoods.set(3, listOfMoods.get(4));
-                        listOfMoods.set(4, listOfMoods.get(5));
-                        listOfMoods.set(5, listOfMoods.get(6));
-                        listOfMoods.set(6, R.color.warm_grey);
-                    } else {
-                        listOfMoods.add(R.color.warm_grey);
-                    }
+
 
                     break;
 
                 case 4:
                     imageButton.setImageResource(R.drawable.smiley_sad);
                     imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.faded_red));
-                    if (listOfMoods.size() == 7) {
-                        listOfMoods.set(0, listOfMoods.get(1));
-                        listOfMoods.set(1, listOfMoods.get(2));
-                        listOfMoods.set(2, listOfMoods.get(3));
-                        listOfMoods.set(3, listOfMoods.get(4));
-                        listOfMoods.set(4, listOfMoods.get(5));
-                        listOfMoods.set(5, listOfMoods.get(6));
-                        listOfMoods.set(6, R.color.faded_red);
-                    } else {
-                        listOfMoods.add(R.color.faded_red);
-                    }
-
                     break;
             }
-            mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
+            mPreferences.edit().putInt("PREFERENCE_KEY_MOOD", mood).apply();
 
-            for (int i = 0; i < listOfMoods.size(); i++) {
-                mPreferences.edit().putInt("PREFERENCE_KEY_COLOR" + i, listOfMoods.get(i)).apply();
-            }
         }
+
     }
 }
 
