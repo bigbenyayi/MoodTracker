@@ -12,7 +12,7 @@
         <TextView
             android:id="@+id/moodTextView"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="86dp"
             android:layout_alignParentBottom="true"
             android:background="@color/banana_yellow"
             android:text="@string/today"
@@ -26,9 +26,10 @@
             android:layout_alignBottom="@+id/moodTextView"
             android:layout_alignEnd="@+id/moodTextView"
             android:layout_alignRight="@+id/moodTextView"
-            android:layout_margin="15dp"
-            android:background="@color/banana_yellow"
-            android:src="@drawable/ic_comment_black_48px" />
+            android:layout_margin="20dp"
+            android:background="@null"
+            android:src="@drawable/ic_comment_black_48px"
+           />
 
     </RelativeLayout>
 

@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String PREF_KEY_COMMENT = "PREFERENCE_KEY_COMMENT";
+    public static final String PREF_KEY_COLOR = "PREFERENCE_KEY_COLOR";
     public static final String EXTRA_NUMBER = "com.example.application.EXTRA_NUMBER";
     public static final String EXTRA_MOOD = "com.example.application.EXTRA_MOOD";
     public static final String PREF_KEY_COLOR0 = "PREFERENCE_KEY_COLOR0";
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREF_KEY_COLOR2 = "PREFERENCE_KEY_COLOR2";
     public static final String PREF_KEY_COLOR3 = "PREFERENCE_KEY_COLOR3";
     public static final String PREF_KEY_COLOR4 = "PREFERENCE_KEY_COLOR4";
-    public static final String PREF_KEY_COLOR5 = "PREFERENCE_KEY_COLOr5";
+    public static final String PREF_KEY_COLOR5 = "PREFERENCE_KEY_COLOR5";
     public static final String PREF_KEY_COLOR6 = "PREFERENCE_KEY_COLOR6";
     public static final String PREF_KEY_MOOD0 = "PREFERENCE_KEY_MOOD0";
     public static final String PREF_KEY_COMMENT0 = "PREFERENCE_KEY_COMMENT0";
@@ -105,20 +107,10 @@ public class MainActivity extends AppCompatActivity {
                                     listOfComments.add(comment);
                                 }
 
-                                if (listOfComments.size() > 6) {
-                                    for (int j = 0; j <= 6; j++) {
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT0, listOfComments.get(0)).apply();
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT1, listOfComments.get(1)).apply();
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT2, listOfComments.get(2)).apply();
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT3, listOfComments.get(3)).apply();
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT4, listOfComments.get(4)).apply();
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT5, listOfComments.get(5)).apply();
-                                        mPreferences.edit().putString(PREF_KEY_COMMENT6, listOfComments.get(6)).apply();
-                                    }
-                                } else {
-                                    for (int j = 0; j < listOfComments.size(); j++) {
-                                        mPreferences.edit().putString("PREFERENCE_KEY_COMMENT" + j, listOfComments.get(j)).apply();
-                                    }
+                                mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
+
+                                for (int j = 0; j < listOfComments.size(); j++) {
+                                    mPreferences.edit().putString("PREFERENCE_KEY_COMMENT" + j, listOfComments.get(j)).apply();
                                 }
 
                             }
@@ -254,7 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 case 3:
                     imageButton.setImageResource(R.drawable.smiley_disappointed);
                     imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.warm_grey));
-                    if (listOfMoods.size() == 6) {
+                    if (listOfMoods.size() == 7) {
                         listOfMoods.set(0, listOfMoods.get(1));
                         listOfMoods.set(1, listOfMoods.get(2));
                         listOfMoods.set(2, listOfMoods.get(3));
@@ -287,24 +279,13 @@ public class MainActivity extends AppCompatActivity {
             }
             mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
 
-            if (listOfMoods.size() > 6) {
-                for (int i = 0; i <= 6; i++) {
-                    mPreferences.edit().putInt(PREF_KEY_COLOR0, listOfMoods.get(0)).apply();
-                    mPreferences.edit().putInt(PREF_KEY_COLOR1, listOfMoods.get(1)).apply();
-                    mPreferences.edit().putInt(PREF_KEY_COLOR2, listOfMoods.get(2)).apply();
-                    mPreferences.edit().putInt(PREF_KEY_COLOR3, listOfMoods.get(3)).apply();
-                    mPreferences.edit().putInt(PREF_KEY_COLOR4, listOfMoods.get(4)).apply();
-                    mPreferences.edit().putInt(PREF_KEY_COLOR5, listOfMoods.get(5)).apply();
-                    mPreferences.edit().putInt(PREF_KEY_COLOR6, listOfMoods.get(6)).apply();
-                }
-            } else {
-                for (int i = 0; i < listOfMoods.size(); i++) {
-                    mPreferences.edit().putInt("PREFERENCE_KEY_COLOR" + i, listOfMoods.get(i)).apply();
-                }
+            for (int i = 0; i < listOfMoods.size(); i++) {
+                mPreferences.edit().putInt("PREFERENCE_KEY_COLOR" + i, listOfMoods.get(i)).apply();
             }
         }
     }
 }
+
 
 
 

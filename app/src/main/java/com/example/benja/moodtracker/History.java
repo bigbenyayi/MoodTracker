@@ -2,10 +2,9 @@ package com.example.benja.moodtracker;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,16 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.ImageButton;
-import android.widget.ListAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class History extends AppCompatActivity {
 
@@ -50,8 +46,6 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        ListView listMood = findViewById(R.id.listMood);
-        listMood.setAdapter(new MyCustomAdapter(this, moodsList));
 
         SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
 
@@ -84,19 +78,8 @@ public class History extends AppCompatActivity {
         moodsList.add(new Mood(comment6, color6));
 
 
-        //Onclick listener + toast
-    /*    moodImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(History.this, comment0, Toast.LENGTH_LONG).show();
-            }
-        });
-*/
-
-        //assign text to the textViews
-       // moodTextView.setBackgroundColor(color0);
-
-
+        ListView listMood = findViewById(R.id.listViewMood);
+        listMood.setAdapter(new MyCustomAdapter(History.this, moodsList));
 
     }
 
@@ -107,16 +90,18 @@ public class History extends AppCompatActivity {
 
 
         MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
-            super(context, R.layout.customlayout);
+            super(context, R.layout.customlayout, moodsList);
             this.context = context;
             this.moodsList = moodsList;
-        }
 
+
+        }
 
         @SuppressLint("InflateParams")
         @NonNull
         @Override
         public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+
             View view = convertView;
             if (view == null) {
                 LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -126,20 +111,62 @@ public class History extends AppCompatActivity {
                     Log.d("isit", "that was the bug");
                 }
             }
-            // Mood mood = moodsList.get(position);
-            // String moodMessage = mood.getMoodMessage();
-            //
-            // Integer moodColor = moodsList.get(position).getMoodColor();
+            Mood mood = moodsList.get(position);
+            final String moodMessage = mood.getMoodMessage();
+            final Integer moodColor = mood.getMoodColor();
+
             assert view != null;
             TextView moodTextView = view.findViewById(R.id.moodTextView);
             ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
 
-            return null;
+            moodImageButton.setImageResource(R.drawable.ic_comment_black_48px);
+
+            String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yerstaday"};
+
+
+            moodTextView.setText(datesList[position]);
+            moodTextView.setBackgroundColor(ContextCompat.getColor(History.this, moodColor));
+
+            if (moodColor == R.color.banana_yellow){
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 1100;
+                moodTextView.setLayoutParams(params);
+            }  else if (moodColor == R.color.light_sage){
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 880;
+                moodTextView.setLayoutParams(params);
+            }else if (moodColor == R.color.cornflower_blue_65){
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 660;
+                moodTextView.setLayoutParams(params);
+            }else if (moodColor == R.color.warm_grey){
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 440;
+                moodTextView.setLayoutParams(params);
+            }else if (moodColor == R.color.faded_red){
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 220;
+                moodTextView.setLayoutParams(params);
+            }
+
+            if (moodMessage.equals("Not found!")){
+                moodImageButton.setVisibility(View.INVISIBLE);
+            }
+
+
+
+            //Onclick listener + toast
+            moodImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(History.this, moodMessage, Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+            return view;
         }
-
-
     }
-
 }
 
 
