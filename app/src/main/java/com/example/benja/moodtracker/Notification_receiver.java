@@ -24,7 +24,7 @@ public class Notification_receiver extends BroadcastReceiver {
     private Context mContext;
     public static final String PREF_KEY_MOOD = "PREFERENCE_KEY_MOOD";
     public List<Integer> listOfMoods = new ArrayList<>();
-    private Context context;
+    final ArrayList<String> listOfComments = new ArrayList<>();
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -33,6 +33,7 @@ public class Notification_receiver extends BroadcastReceiver {
         SharedPreferences mPreferences = context.getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
 
         int mood = (mPreferences.getInt(PREF_KEY_MOOD, 2));
+        String comment = (mPreferences.getString(PREF_KEY_COMMENT, "Not found!"));
 
         switch (mood) {
 
@@ -118,6 +119,22 @@ public class Notification_receiver extends BroadcastReceiver {
 
         for (int i = 0; i < listOfMoods.size(); i++) {
             mPreferences.edit().putInt("PREFERENCE_KEY_COLOR" + i, listOfMoods.get(i)).apply();
+        }
+
+        if (listOfComments.size() == 7) {
+            listOfComments.set(0, listOfComments.get(1));
+            listOfComments.set(1, listOfComments.get(2));
+            listOfComments.set(2, listOfComments.get(3));
+            listOfComments.set(3, listOfComments.get(4));
+            listOfComments.set(4, listOfComments.get(5));
+            listOfComments.set(5, listOfComments.get(6));
+            listOfComments.set(6, comment);
+        } else {
+            listOfComments.add(comment);
+        }
+
+        for (int j = 0; j < listOfComments.size(); j++) {
+            mPreferences.edit().putString("PREFERENCE_KEY_COMMENT" + j, listOfComments.get(j)).apply();
         }
 
     }

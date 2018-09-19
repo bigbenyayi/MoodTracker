@@ -77,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        final ArrayList<String> listOfComments = new ArrayList<String>();
 
         //When one clicks on the comment button
         commentButton.setOnClickListener(new View.OnClickListener() {
@@ -93,24 +92,8 @@ public class MainActivity extends AppCompatActivity {
                                 Intent data = new Intent();
                                 data.putExtra(BUNDLE_EXTRA_COMMENT, comment);
                                 setResult(RESULT_OK, data);
-
-                                if (listOfComments.size() == 7) {
-                                    listOfComments.set(0, listOfComments.get(1));
-                                    listOfComments.set(1, listOfComments.get(2));
-                                    listOfComments.set(2, listOfComments.get(3));
-                                    listOfComments.set(3, listOfComments.get(4));
-                                    listOfComments.set(4, listOfComments.get(5));
-                                    listOfComments.set(5, listOfComments.get(6));
-                                    listOfComments.set(6, comment);
-                                } else {
-                                    listOfComments.add(comment);
-                                }
-
-                                mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
-
-                                for (int j = 0; j < listOfComments.size(); j++) {
-                                    mPreferences.edit().putString("PREFERENCE_KEY_COMMENT" + j, listOfComments.get(j)).apply();
-                                }
+                                SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
+                                mPreferences.edit().putString("PREFERENCE_KEY_COMMENT", comment).apply();
 
                             }
                         })
