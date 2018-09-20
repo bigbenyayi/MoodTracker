@@ -111,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 22);
+        calendar.set(Calendar.MINUTE, 23);
         calendar.set(Calendar.SECOND, 0);
 
         Intent intent = new Intent(getApplicationContext(), Notification_receiver.class);

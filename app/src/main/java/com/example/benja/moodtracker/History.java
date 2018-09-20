@@ -50,123 +50,122 @@ public class History extends AppCompatActivity {
         SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
 
         //Retrieving the comments from SP
-        final String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, "Not found!"));
-        String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, "Not found!"));
-        String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, "Not found!"));
-        String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, "Not found!"));
-        String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, "Not found!"));
-        String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, "Not found!"));
-        String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, "Not found!"));
+        String comment0 = (mPreferences.getString(PREF_KEY_COMMENT0, ""));
+        String comment1 = (mPreferences.getString(PREF_KEY_COMMENT1, ""));
+        String comment2 = (mPreferences.getString(PREF_KEY_COMMENT2, ""));
+        String comment3 = (mPreferences.getString(PREF_KEY_COMMENT3, ""));
+        String comment4 = (mPreferences.getString(PREF_KEY_COMMENT4, ""));
+        String comment5 = (mPreferences.getString(PREF_KEY_COMMENT5, ""));
+        String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, ""));
 
         //Retrieving the colors from SP
-        int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 0));
-        int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 0));
-        int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 0));
-        int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 0));
-        int color4 = (mPreferences.getInt(PREF_KEY_COLOR4, 0));
-        int color5 = (mPreferences.getInt(PREF_KEY_COLOR5, 0));
-        int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 0));
+        int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 5));
+        int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 5));
+        int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 5));
+        int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 5));
+        int color4 = (mPreferences.getInt(PREF_KEY_COLOR4, 5));
+        int color5 = (mPreferences.getInt(PREF_KEY_COLOR5, 5));
+        int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 5));
 
 
-        //Adding all that in an array
-        moodsList.add(new Mood(comment0, color0));
-        moodsList.add(new Mood(comment1, color1));
-        moodsList.add(new Mood(comment2, color2));
-        moodsList.add(new Mood(comment3, color3));
-        moodsList.add(new Mood(comment4, color4));
-        moodsList.add(new Mood(comment5, color5));
-        moodsList.add(new Mood(comment6, color6));
+    //Adding all that in an array
+            moodsList.add(new Mood(comment6, color6));
+            moodsList.add(new Mood(comment5, color5));
+            moodsList.add(new Mood(comment4, color4));
+            moodsList.add(new Mood(comment3, color3));
+            moodsList.add(new Mood(comment2, color2));
+            moodsList.add(new Mood(comment1, color1));
+            moodsList.add(new Mood(comment0, color0));
 
 
-        ListView listMood = findViewById(R.id.listViewMood);
-        listMood.setAdapter(new MyCustomAdapter(History.this, moodsList));
+    ListView listMood = findViewById(R.id.listViewMood);
+        listMood.setAdapter(new
+
+    MyCustomAdapter(History.this, moodsList));
+
+}
+
+
+public class MyCustomAdapter extends ArrayAdapter {
+    private Context context;
+    private ArrayList<Mood> moodsList;
+
+
+    MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
+        super(context, R.layout.customlayout, moodsList);
+        this.context = context;
+        this.moodsList = moodsList;
+
 
     }
 
+    @SuppressLint("InflateParams")
+    @NonNull
+    @Override
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-    public class MyCustomAdapter extends ArrayAdapter {
-        private Context context;
-        private ArrayList<Mood> moodsList;
-
-
-        MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
-            super(context, R.layout.customlayout, moodsList);
-            this.context = context;
-            this.moodsList = moodsList;
-
-
-        }
-
-        @SuppressLint("InflateParams")
-        @NonNull
-        @Override
-        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
-
-            View view = convertView;
-            if (view == null) {
-                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                if (inflater != null) {
-                    view = inflater.inflate(R.layout.customlayout, null);
-                } else {
-                    Log.d("isit", "that was the bug");
-                }
+        View view = convertView;
+        if (view == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            if (inflater != null) {
+                view = inflater.inflate(R.layout.customlayout, null);
             }
-            Mood mood = moodsList.get(position);
-            final String moodMessage = mood.getMoodMessage();
-            final Integer moodColor = mood.getMoodColor();
+        }
+        Mood mood = moodsList.get(position);
+        final String moodMessage = mood.getMoodMessage();
+        final Integer moodColor = mood.getMoodColor();
 
-            assert view != null;
-            TextView moodTextView = view.findViewById(R.id.moodTextView);
-            ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
+        assert view != null;
+        TextView moodTextView = view.findViewById(R.id.moodTextView);
+        ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
 
-            moodImageButton.setImageResource(R.drawable.ic_comment_black_48px);
+        moodImageButton.setImageResource(R.drawable.ic_comment_black_48px);
 
-            String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yerstaday"};
+        String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yesterday"};
 
 
-            moodTextView.setText(datesList[position]);
+        moodTextView.setText(datesList[position]);
+        if (moodColor != 5)
             moodTextView.setBackgroundColor(ContextCompat.getColor(History.this, moodColor));
 
-            if (moodColor == R.color.banana_yellow){
-                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-                params.width = 1100;
-                moodTextView.setLayoutParams(params);
-            }  else if (moodColor == R.color.light_sage){
-                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-                params.width = 880;
-                moodTextView.setLayoutParams(params);
-            }else if (moodColor == R.color.cornflower_blue_65){
-                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-                params.width = 660;
-                moodTextView.setLayoutParams(params);
-            }else if (moodColor == R.color.warm_grey){
-                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-                params.width = 440;
-                moodTextView.setLayoutParams(params);
-            }else if (moodColor == R.color.faded_red){
-                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-                params.width = 220;
-                moodTextView.setLayoutParams(params);
-            }
-
-            if (moodMessage.equals("Not found!")){
-                moodImageButton.setVisibility(View.INVISIBLE);
-            }
-
-
-
-            //Onclick listener + toast
-            moodImageButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(History.this, moodMessage, Toast.LENGTH_LONG).show();
-                }
-            });
-
-
-            return view;
+        if (moodColor == R.color.banana_yellow) {
+            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+            params.width = 1100;
+            moodTextView.setLayoutParams(params);
+        } else if (moodColor == R.color.light_sage) {
+            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+            params.width = 880;
+            moodTextView.setLayoutParams(params);
+        } else if (moodColor == R.color.cornflower_blue_65) {
+            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+            params.width = 660;
+            moodTextView.setLayoutParams(params);
+        } else if (moodColor == R.color.warm_grey) {
+            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+            params.width = 440;
+            moodTextView.setLayoutParams(params);
+        } else if (moodColor == R.color.faded_red) {
+            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+            params.width = 220;
+            moodTextView.setLayoutParams(params);
         }
+
+        if (moodMessage.equals("")) {
+            moodImageButton.setVisibility(View.INVISIBLE);
+        }
+
+        //Onclick listener + toast
+        moodImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(History.this, moodMessage, Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        return view;
     }
+}
 }
 
 
