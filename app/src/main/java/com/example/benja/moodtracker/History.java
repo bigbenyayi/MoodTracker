@@ -59,7 +59,7 @@ public class History extends AppCompatActivity {
         String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, ""));
 
         //Retrieving the colors from SP
-        int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 5));
+        final int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 5));
         int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 5));
         int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 5));
         int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 5));
@@ -68,104 +68,108 @@ public class History extends AppCompatActivity {
         int color6 = (mPreferences.getInt(PREF_KEY_COLOR6, 5));
 
 
-    //Adding all that in an array
-            moodsList.add(new Mood(comment6, color6));
-            moodsList.add(new Mood(comment5, color5));
-            moodsList.add(new Mood(comment4, color4));
-            moodsList.add(new Mood(comment3, color3));
-            moodsList.add(new Mood(comment2, color2));
-            moodsList.add(new Mood(comment1, color1));
-            moodsList.add(new Mood(comment0, color0));
+        //Adding all that in an array
+        moodsList.add(new Mood(comment6, color6));
+        moodsList.add(new Mood(comment5, color5));
+        moodsList.add(new Mood(comment4, color4));
+        moodsList.add(new Mood(comment3, color3));
+        moodsList.add(new Mood(comment2, color2));
+        moodsList.add(new Mood(comment1, color1));
+        moodsList.add(new Mood(comment0, color0));
 
 
-    ListView listMood = findViewById(R.id.listViewMood);
+        ListView listMood = findViewById(R.id.listViewMood);
         listMood.setAdapter(new
 
-    MyCustomAdapter(History.this, moodsList));
-
-}
-
-
-public class MyCustomAdapter extends ArrayAdapter {
-    private Context context;
-    private ArrayList<Mood> moodsList;
-
-
-    MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
-        super(context, R.layout.customlayout, moodsList);
-        this.context = context;
-        this.moodsList = moodsList;
-
+                MyCustomAdapter(History.this, moodsList));
 
     }
 
-    @SuppressLint("InflateParams")
-    @NonNull
-    @Override
-    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
 
-        View view = convertView;
-        if (view == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            if (inflater != null) {
-                view = inflater.inflate(R.layout.customlayout, null);
+    public class MyCustomAdapter extends ArrayAdapter {
+        private Context context;
+        private ArrayList<Mood> moodsList;
+
+
+        MyCustomAdapter(Context context, ArrayList<Mood> moodsList) {
+            super(context, R.layout.customlayout, moodsList);
+            this.context = context;
+            this.moodsList = moodsList;
+
+
+        }
+
+        @SuppressLint("InflateParams")
+        @NonNull
+        @Override
+        public View getView(int position, View convertView, @NonNull ViewGroup parent) {
+
+            View view = convertView;
+            if (view == null) {
+                LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                if (inflater != null) {
+                    view = inflater.inflate(R.layout.customlayout, null);
+                }
             }
-        }
-        Mood mood = moodsList.get(position);
-        final String moodMessage = mood.getMoodMessage();
-        final Integer moodColor = mood.getMoodColor();
+            Mood mood = moodsList.get(position);
+            final String moodMessage = mood.getMoodMessage();
+            final Integer moodColor = mood.getMoodColor();
 
-        assert view != null;
-        TextView moodTextView = view.findViewById(R.id.moodTextView);
-        ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
+            assert view != null;
+            TextView moodTextView = view.findViewById(R.id.moodTextView);
+            ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
 
-        moodImageButton.setImageResource(R.drawable.ic_comment_black_48px);
+            moodImageButton.setImageResource(R.drawable.ic_comment_black_48px);
 
-        String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yesterday"};
+            String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yesterday"};
 
 
-        moodTextView.setText(datesList[position]);
-        if (moodColor != 5)
-            moodTextView.setBackgroundColor(ContextCompat.getColor(History.this, moodColor));
-
-        if (moodColor == R.color.banana_yellow) {
-            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-            params.width = 1100;
-            moodTextView.setLayoutParams(params);
-        } else if (moodColor == R.color.light_sage) {
-            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-            params.width = 880;
-            moodTextView.setLayoutParams(params);
-        } else if (moodColor == R.color.cornflower_blue_65) {
-            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-            params.width = 660;
-            moodTextView.setLayoutParams(params);
-        } else if (moodColor == R.color.warm_grey) {
-            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-            params.width = 440;
-            moodTextView.setLayoutParams(params);
-        } else if (moodColor == R.color.faded_red) {
-            ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
-            params.width = 220;
-            moodTextView.setLayoutParams(params);
-        }
-
-        if (moodMessage.equals("")) {
-            moodImageButton.setVisibility(View.INVISIBLE);
-        }
-
-        //Onclick listener + toast
-        moodImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(History.this, moodMessage, Toast.LENGTH_LONG).show();
+            moodTextView.setText(datesList[position]);
+            if (moodColor != 5) {
+                moodTextView.setBackgroundColor(ContextCompat.getColor(History.this, moodColor));
+            } else {
+                moodTextView.setVisibility(View.INVISIBLE);
             }
-        });
+
+            if (moodColor == R.color.banana_yellow) {
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 1100;
+                moodTextView.setLayoutParams(params);
+            } else if (moodColor == R.color.light_sage) {
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 880;
+                moodTextView.setLayoutParams(params);
+            } else if (moodColor == R.color.cornflower_blue_65) {
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 660;
+                moodTextView.setLayoutParams(params);
+            } else if (moodColor == R.color.warm_grey) {
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 440;
+                moodTextView.setLayoutParams(params);
+            } else if (moodColor == R.color.faded_red) {
+                ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
+                params.width = 220;
+                moodTextView.setLayoutParams(params);
+            }
+
+            if (moodMessage.equals("")) {
+                moodImageButton.setVisibility(View.INVISIBLE);
+            }
 
 
-        return view;
+            //Onclick listener + toast
+            moodImageButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(History.this, moodMessage, Toast.LENGTH_LONG).show();
+                }
+            });
+
+
+            return view;
+        }
     }
-}
 }
 
 

@@ -27,12 +27,14 @@ public class Notification_receiver extends BroadcastReceiver {
     public static final String PREF_KEY_COLOR3 = "PREFERENCE_KEY_COLOR3";
     public static final String PREF_KEY_COLOR4 = "PREFERENCE_KEY_COLOR4";
     public static final String PREF_KEY_COLOR5 = "PREFERENCE_KEY_COLOR5";
+    public static final String PREF_KEY_COLOR6 = "PREFERENCE_KEY_COLOR6";
     public static final String PREF_KEY_COMMENT0 = "PREFERENCE_KEY_COMMENT0";
     public static final String PREF_KEY_COMMENT1 = "PREFERENCE_KEY_COMMENT1";
     public static final String PREF_KEY_COMMENT2 = "PREFERENCE_KEY_COMMENT2";
     public static final String PREF_KEY_COMMENT3 = "PREFERENCE_KEY_COMMENT3";
     public static final String PREF_KEY_COMMENT4 = "PREFERENCE_KEY_COMMENT4";
-    public static final String PREF_KEY_COMMENT5 = "PREFERENCE_KEY_COMMENT4";
+    public static final String PREF_KEY_COMMENT5 = "PREFERENCE_KEY_COMMENT5";
+    public static final String PREF_KEY_COMMENT6 = "PREFERENCE_KEY_COMMENT6";
     private Context mContext;
     public static final String PREF_KEY_MOOD = "PREFERENCE_KEY_MOOD";
     public List<Integer> listOfMoods = new ArrayList<>();
@@ -41,7 +43,7 @@ public class Notification_receiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         this.mContext = context;
-        Log.d("mhsc","I've began");
+        Log.d("mhsc", "I've began");
 
         SharedPreferences mPreferences = context.getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
         int mood = (mPreferences.getInt(PREF_KEY_MOOD, 2));
@@ -52,228 +54,300 @@ public class Notification_receiver extends BroadcastReceiver {
         int checking3 = (mPreferences.getInt(PREF_KEY_COLOR3, 15));
         int checking4 = (mPreferences.getInt(PREF_KEY_COLOR4, 15));
         int checking5 = (mPreferences.getInt(PREF_KEY_COLOR5, 15));
+        int checking6 = (mPreferences.getInt(PREF_KEY_COLOR6, 15));
         String checkingComments0 = (mPreferences.getString(PREF_KEY_COMMENT0, "NoThInG"));
         String checkingComments1 = (mPreferences.getString(PREF_KEY_COMMENT1, "NoThInG"));
         String checkingComments2 = (mPreferences.getString(PREF_KEY_COMMENT2, "NoThInG"));
         String checkingComments3 = (mPreferences.getString(PREF_KEY_COMMENT3, "NoThInG"));
         String checkingComments4 = (mPreferences.getString(PREF_KEY_COMMENT4, "NoThInG"));
         String checkingComments5 = (mPreferences.getString(PREF_KEY_COMMENT5, "NoThInG"));
+        String checkingComments6 = (mPreferences.getString(PREF_KEY_COMMENT5, "NoThInG"));
 
         switch (mood) {
 
             case 0:
 
-                if (listOfMoods.size() == 7) {
-                    listOfMoods.set(0, listOfMoods.get(1));
-                    listOfMoods.set(1, listOfMoods.get(2));
-                    listOfMoods.set(2, listOfMoods.get(3));
-                    listOfMoods.set(3, listOfMoods.get(4));
-                    listOfMoods.set(4, listOfMoods.get(5));
-                    listOfMoods.set(5, listOfMoods.get(6));
-                    listOfMoods.set(6, R.color.banana_yellow);
+
+                if (checking0 == 15) {
+                    listOfMoods.add(R.color.banana_yellow);
+                } else if (checking1 == 15) {
+                    listOfMoods.add(R.color.banana_yellow);
+                    listOfMoods.add(checking0);
+
+                } else if (checking2 == 15) {
+                    listOfMoods.add(R.color.banana_yellow);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+
+                } else if (checking3 == 15) {
+                    listOfMoods.add(R.color.banana_yellow);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+
+                } else if (checking4 == 15) {
+                    listOfMoods.add(R.color.banana_yellow);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+
+                } else if (checking5 == 15) {
+                    listOfMoods.add(R.color.banana_yellow);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking6 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
                 } else {
-
-
-
-                    if (checking0 == 15) {
-                        listOfMoods.add(R.color.banana_yellow);
-                    } else if (checking1 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(1, R.color.banana_yellow);
-                    } else if (checking2 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(2, R.color.banana_yellow);
-                    } else if (checking3 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(3, R.color.banana_yellow);
-                    } else if (checking4 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(4, R.color.banana_yellow);
-                    } else if (checking5 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(checking4);
-                        listOfMoods.add(5, R.color.banana_yellow);
-                    }
+                    listOfMoods.add(checking6);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                    listOfMoods.set(6, checking5);
+                    listOfMoods.set(5, checking4);
+                    listOfMoods.set(4, checking3);
+                    listOfMoods.set(3, checking2);
+                    listOfMoods.set(2, checking1);
+                    listOfMoods.set(1, checking0);
+                    listOfMoods.set(0, R.color.warm_grey);
                 }
                 break;
 
             case 1:
 
-                if (listOfMoods.size() >= 7) {
-                    listOfMoods.set(0, listOfMoods.get(1));
-                    listOfMoods.set(1, listOfMoods.get(2));
-                    listOfMoods.set(2, listOfMoods.get(3));
-                    listOfMoods.set(3, listOfMoods.get(4));
-                    listOfMoods.set(4, listOfMoods.get(5));
-                    listOfMoods.set(5, listOfMoods.get(6));
-                    listOfMoods.set(6, R.color.light_sage);
+                if (checking0 == 15) {
+                    listOfMoods.add(R.color.light_sage);
+                } else if (checking1 == 15) {
+                    listOfMoods.add(R.color.light_sage);
+                    listOfMoods.add(checking0);
+                } else if (checking2 == 15) {
+                    listOfMoods.add(R.color.light_sage);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking3 == 15) {
+                    listOfMoods.add(R.color.light_sage);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking4 == 15) {
+                    listOfMoods.add(R.color.light_sage);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking5 == 15) {
+                    listOfMoods.add(R.color.light_sage);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking6 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
                 } else {
-                    if (checking0 == 15) {
-                        listOfMoods.add(R.color.light_sage);
-                    } else if (checking1 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(R.color.light_sage);
-                    } else if (checking2 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(R.color.light_sage);
-                    } else if (checking3 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add( R.color.light_sage);
-                    } else if (checking4 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add( R.color.light_sage);
-                    } else if (checking5 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(checking4);
-                        listOfMoods.add(R.color.light_sage);
-                    }
-                }
+                    listOfMoods.add(checking6);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                    listOfMoods.set(6, checking5);
+                    listOfMoods.set(5, checking4);
+                    listOfMoods.set(4, checking3);
+                    listOfMoods.set(3, checking2);
+                    listOfMoods.set(2, checking1);
+                    listOfMoods.set(1, checking0);
+                    listOfMoods.set(0, R.color.warm_grey);
 
+                }
                 break;
 
             case 2:
 
-                if (listOfMoods.size() == 7) {
-                    listOfMoods.set(0, listOfMoods.get(1));
-                    listOfMoods.set(1, listOfMoods.get(2));
-                    listOfMoods.set(2, listOfMoods.get(3));
-                    listOfMoods.set(3, listOfMoods.get(4));
-                    listOfMoods.set(4, listOfMoods.get(5));
-                    listOfMoods.set(5, listOfMoods.get(6));
-                    listOfMoods.set(6, R.color.cornflower_blue_65);
+                if (checking0 == 15) {
+                    listOfMoods.add(R.color.cornflower_blue_65);
+                } else if (checking1 == 15) {
+                    listOfMoods.add(R.color.cornflower_blue_65);
+                    listOfMoods.add(checking0);
+                } else if (checking2 == 15) {
+                    listOfMoods.add(R.color.cornflower_blue_65);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking3 == 15) {
+                    listOfMoods.add(R.color.cornflower_blue_65);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking4 == 15) {
+                    listOfMoods.add(R.color.cornflower_blue_65);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking5 == 15) {
+                    listOfMoods.add(R.color.cornflower_blue_65);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking6 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
                 } else {
-                    if (checking0 == 15) {
-                        listOfMoods.add(R.color.cornflower_blue_65);
-                    } else if (checking1 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(1, R.color.cornflower_blue_65);
-                    } else if (checking2 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(2, R.color.cornflower_blue_65);
-                    } else if (checking3 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(3, R.color.cornflower_blue_65);
-                    } else if (checking4 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(4, R.color.cornflower_blue_65);
-                    } else if (checking5 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(checking4);
-                        listOfMoods.add(5, R.color.cornflower_blue_65);
-                    }
+                    listOfMoods.add(checking6);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                    listOfMoods.set(6, checking5);
+                    listOfMoods.set(5, checking4);
+                    listOfMoods.set(4, checking3);
+                    listOfMoods.set(3, checking2);
+                    listOfMoods.set(2, checking1);
+                    listOfMoods.set(1, checking0);
+                    listOfMoods.set(0, R.color.warm_grey);
                 }
-
                 break;
 
             case 3:
 
-                if (listOfMoods.size() == 7) {
-                    listOfMoods.set(0, listOfMoods.get(1));
-                    listOfMoods.set(1, listOfMoods.get(2));
-                    listOfMoods.set(2, listOfMoods.get(3));
-                    listOfMoods.set(3, listOfMoods.get(4));
-                    listOfMoods.set(4, listOfMoods.get(5));
-                    listOfMoods.set(5, listOfMoods.get(6));
-                    listOfMoods.set(6, R.color.warm_grey);
+
+                if (checking0 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                } else if (checking1 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking0);
+                } else if (checking2 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking3 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking4 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking5 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking6 == 15) {
+                    listOfMoods.add(R.color.warm_grey);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
                 } else {
-                    if (checking0 == 15) {
-                        listOfMoods.add(R.color.warm_grey);
-                    } else if (checking1 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(1, R.color.warm_grey);
-                    } else if (checking2 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(2, R.color.warm_grey);
-                    } else if (checking3 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(3, R.color.warm_grey);
-                    } else if (checking4 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(4, R.color.warm_grey);
-                    } else if (checking5 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(checking4);
-                        listOfMoods.add(5, R.color.warm_grey);
-                    }
+                    listOfMoods.add(checking6);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                    listOfMoods.set(6, checking5);
+                    listOfMoods.set(5, checking4);
+                    listOfMoods.set(4, checking3);
+                    listOfMoods.set(3, checking2);
+                    listOfMoods.set(2, checking1);
+                    listOfMoods.set(1, checking0);
+                    listOfMoods.set(0, R.color.warm_grey);
                 }
 
                 break;
 
             case 4:
 
-                if (listOfMoods.size() == 7) {
-                    listOfMoods.set(0, listOfMoods.get(1));
-                    listOfMoods.set(1, listOfMoods.get(2));
-                    listOfMoods.set(2, listOfMoods.get(3));
-                    listOfMoods.set(3, listOfMoods.get(4));
-                    listOfMoods.set(4, listOfMoods.get(5));
-                    listOfMoods.set(5, listOfMoods.get(6));
-                    listOfMoods.set(6, R.color.faded_red);
+
+                if (checking0 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                } else if (checking1 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                    listOfMoods.add(checking0);
+                } else if (checking2 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking3 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking4 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking5 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                } else if (checking6 == 15) {
+                    listOfMoods.add(R.color.faded_red);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
                 } else {
-                    if (checking0 == 15) {
-                        listOfMoods.add(R.color.faded_red);
-                    } else if (checking1 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(1, R.color.faded_red);
-                    } else if (checking2 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(2, R.color.faded_red);
-                    } else if (checking3 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(3, R.color.faded_red);
-                    } else if (checking4 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(4, R.color.faded_red);
-                    } else if (checking5 == 15) {
-                        listOfMoods.add(checking0);
-                        listOfMoods.add(checking1);
-                        listOfMoods.add(checking2);
-                        listOfMoods.add(checking3);
-                        listOfMoods.add(checking4);
-                        listOfMoods.add(5, R.color.faded_red);
-                    }                }
+                    listOfMoods.add(checking6);
+                    listOfMoods.add(checking5);
+                    listOfMoods.add(checking4);
+                    listOfMoods.add(checking3);
+                    listOfMoods.add(checking2);
+                    listOfMoods.add(checking1);
+                    listOfMoods.add(checking0);
+                    listOfMoods.set(6, checking5);
+                    listOfMoods.set(5, checking4);
+                    listOfMoods.set(4, checking3);
+                    listOfMoods.set(3, checking2);
+                    listOfMoods.set(2, checking1);
+                    listOfMoods.set(1, checking0);
+                    listOfMoods.set(0, R.color.faded_red);
+
+                }
 
                 break;
         }
@@ -282,50 +356,65 @@ public class Notification_receiver extends BroadcastReceiver {
             mPreferences.edit().putInt("PREFERENCE_KEY_COLOR" + i, listOfMoods.get(i)).apply();
         }
 
-        if (listOfComments.size() == 7) {
-            listOfComments.set(0, listOfComments.get(1));
-            listOfComments.set(1, listOfComments.get(2));
-            listOfComments.set(2, listOfComments.get(3));
-            listOfComments.set(3, listOfComments.get(4));
-            listOfComments.set(4, listOfComments.get(5));
-            listOfComments.set(5, listOfComments.get(6));
-            listOfComments.set(6, comment);
+        if (checkingComments0.equals("NoThInG")) {
+            listOfComments.add(comment);
+        } else if (checkingComments1.equals("NoThInG")) {
+            listOfComments.add(comment);
+            listOfComments.add(checkingComments0);
+        } else if (checkingComments2.equals("NoThInG")) {
+            listOfComments.add(comment);
+            listOfComments.add(checkingComments1);
+            listOfComments.add(checkingComments0);
+        } else if (checkingComments3.equals("NoThInG")) {
+            listOfComments.add(comment);
+            listOfComments.add(checkingComments2);
+            listOfComments.add(checkingComments1);
+            listOfComments.add(checkingComments0);
+        } else if (checkingComments4.equals("NoThInG")) {
+            listOfComments.add(comment);
+            listOfComments.add(checkingComments3);
+            listOfComments.add(checkingComments2);
+            listOfComments.add(checkingComments1);
+            listOfComments.add(checkingComments0);
+        } else if (checkingComments5.equals("NoThInG")) {
+            listOfComments.add(comment);
+            listOfComments.add(checkingComments4);
+            listOfComments.add(checkingComments3);
+            listOfComments.add(checkingComments2);
+            listOfComments.add(checkingComments1);
+            listOfComments.add(checkingComments0);
+        } else if (checkingComments6.equals("NoThInG")) {
+            listOfComments.add(comment);
+            listOfComments.add(checkingComments5);
+            listOfComments.add(checkingComments4);
+            listOfComments.add(checkingComments3);
+            listOfComments.add(checkingComments2);
+            listOfComments.add(checkingComments1);
+            listOfComments.add(checkingComments0);
         } else {
-            if (checkingComments0.equals("NoThInG")) {
-                listOfComments.add(comment);
-            } else if (checkingComments1.equals("NoThInG")) {
-                listOfComments.add(checkingComments0);
-                listOfComments.add(comment);
-            } else if (checkingComments2.equals("NoThInG")) {
-                listOfComments.add(checkingComments0);
-                listOfComments.add(checkingComments1);
-                listOfComments.add(comment);
-            } else if (checkingComments3.equals("NoThInG")) {
-                listOfComments.add(checkingComments0);
-                listOfComments.add(checkingComments1);
-                listOfComments.add(checkingComments2);
-                listOfComments.add(comment);
-            } else if (checkingComments4.equals("NoThInG")) {
-                listOfComments.add(checkingComments0);
-                listOfComments.add(checkingComments1);
-                listOfComments.add(checkingComments2);
-                listOfComments.add(checkingComments3);
-                listOfComments.add(comment);
-            } else if (checkingComments5.equals("NoThInG")) {
-                listOfComments.add(checkingComments0);
-                listOfComments.add(checkingComments1);
-                listOfComments.add(checkingComments2);
-                listOfComments.add(checkingComments3);
-                listOfComments.add(checkingComments4);
-                listOfComments.add(comment);
-            }
+            listOfComments.add(checkingComments6);
+            listOfComments.add(checkingComments5);
+            listOfComments.add(checkingComments4);
+            listOfComments.add(checkingComments3);
+            listOfComments.add(checkingComments2);
+            listOfComments.add(checkingComments1);
+            listOfComments.add(checkingComments0);
+            listOfComments.set(6, checkingComments5);
+            listOfComments.set(5, checkingComments4);
+            listOfComments.set(4, checkingComments3);
+            listOfComments.set(3, checkingComments2);
+            listOfComments.set(2, checkingComments1);
+            listOfComments.set(1, checkingComments0);
+            listOfComments.set(0, comment);
         }
+        for (
+                int j = 0; j < listOfComments.size(); j++)
 
-        for (int j = 0; j < listOfComments.size(); j++) {
+        {
             mPreferences.edit().putString("PREFERENCE_KEY_COMMENT" + j, listOfComments.get(j)).apply();
         }
 
+        mPreferences.edit().putString("PREFERENCE_KEY_COMMENT", "").apply();
     }
-
 }
 
