@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import static android.content.Intent.EXTRA_TEXT;
 public class MainActivity extends AppCompatActivity {
     public static final String PREF_KEY_COMMENT = "PREFERENCE_KEY_COMMENT";
     public static final String PREF_KEY_COLOR = "PREFERENCE_KEY_COLOR";
@@ -107,8 +109,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(Calendar.HOUR_OF_DAY, 19);
