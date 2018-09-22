@@ -10,5 +10,6 @@
     <color name="cornflower_blue_65">#6666ff</color>
     <color name="light_sage">#ffb8e986</color>
     <color name="banana_yellow">#fff9ec4f</color>
+    <color name="transparent">#80000000</color>
 
 </resources>

@@ -59,7 +59,7 @@ public class History extends AppCompatActivity {
         String comment6 = (mPreferences.getString(PREF_KEY_COMMENT6, ""));
 
         //Retrieving the colors from SP
-        final int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 5));
+        int color0 = (mPreferences.getInt(PREF_KEY_COLOR0, 5));
         int color1 = (mPreferences.getInt(PREF_KEY_COLOR1, 5));
         int color2 = (mPreferences.getInt(PREF_KEY_COLOR2, 5));
         int color3 = (mPreferences.getInt(PREF_KEY_COLOR3, 5));
@@ -69,20 +69,17 @@ public class History extends AppCompatActivity {
 
 
         //Adding all that in an array
-        moodsList.add(new Mood(comment6, color6));
-        moodsList.add(new Mood(comment5, color5));
-        moodsList.add(new Mood(comment4, color4));
-        moodsList.add(new Mood(comment3, color3));
-        moodsList.add(new Mood(comment2, color2));
-        moodsList.add(new Mood(comment1, color1));
         moodsList.add(new Mood(comment0, color0));
+        moodsList.add(new Mood(comment1, color1));
+        moodsList.add(new Mood(comment2, color2));
+        moodsList.add(new Mood(comment3, color3));
+        moodsList.add(new Mood(comment4, color4));
+        moodsList.add(new Mood(comment5, color5));
+        moodsList.add(new Mood(comment6, color6));
 
 
         ListView listMood = findViewById(R.id.listViewMood);
-        listMood.setAdapter(new
-
-                MyCustomAdapter(History.this, moodsList));
-
+        listMood.setAdapter(new MyCustomAdapter(History.this, moodsList));
     }
 
 
@@ -113,24 +110,36 @@ public class History extends AppCompatActivity {
             }
             Mood mood = moodsList.get(position);
             final String moodMessage = mood.getMoodMessage();
-            final Integer moodColor = mood.getMoodColor();
+            Integer moodColor = mood.getMoodColor();
 
+            //Retrieving textView and imageButton from the custom layout file
             assert view != null;
             TextView moodTextView = view.findViewById(R.id.moodTextView);
             ImageButton moodImageButton = view.findViewById(R.id.moodImageButton);
 
+
+            //Giving the imageButton an image to display
             moodImageButton.setImageResource(R.drawable.ic_comment_black_48px);
 
+
+            //Displaying the days through he listview
             String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yesterday"};
-
-
             moodTextView.setText(datesList[position]);
-            if (moodColor != 5) {
-                moodTextView.setBackgroundColor(ContextCompat.getColor(History.this, moodColor));
-            } else {
-                moodTextView.setVisibility(View.INVISIBLE);
+
+            if (moodColor == 0) {
+                moodColor = R.color.banana_yellow;
+            } else if (moodColor == 1) {
+                moodColor = R.color.light_sage;
+            } else if (moodColor == 2) {
+                moodColor = R.color.cornflower_blue_65;
+            } else if (moodColor == 3) {
+                moodColor = R.color.warm_grey;
+            } else if (moodColor == 4) {
+                moodColor = R.color.faded_red;
             }
 
+
+            //Defining the width for each color possible
             if (moodColor == R.color.banana_yellow) {
                 ViewGroup.LayoutParams params = moodTextView.getLayoutParams();
                 params.width = 1100;
@@ -153,12 +162,21 @@ public class History extends AppCompatActivity {
                 moodTextView.setLayoutParams(params);
             }
 
+            //If a mood has been selected display it
+            if (moodColor != 5) {
+                moodTextView.setBackgroundColor(ContextCompat.getColor(History.this, moodColor));
+            } else {
+                moodTextView.setVisibility(View.INVISIBLE);
+            }
+
+
+            //If not message is input the comment button is set invisible
             if (moodMessage.equals("")) {
                 moodImageButton.setVisibility(View.INVISIBLE);
             }
 
 
-            //Onclick listener + toast
+            //When one taps on the comment button a toast shall appear with the correct comment ofr the day
             moodImageButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

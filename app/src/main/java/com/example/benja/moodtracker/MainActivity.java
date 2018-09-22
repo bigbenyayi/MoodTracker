@@ -111,8 +111,8 @@ public class MainActivity extends AppCompatActivity {
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY, 16);
-        calendar.set(Calendar.MINUTE, 25);
+        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 34);
         calendar.set(Calendar.SECOND, 0);
 
         Intent intent = new Intent(getApplicationContext(), Notification_receiver.class);
@@ -120,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         assert alarmManager != null;
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
-
-
     }
 
     View.OnTouchListener touchListener = new View.OnTouchListener() {
@@ -209,9 +207,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             mPreferences.edit().putInt("PREFERENCE_KEY_MOOD", mood).apply();
-
         }
-
     }
 }
 
