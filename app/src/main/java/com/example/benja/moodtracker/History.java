@@ -21,7 +21,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class History extends AppCompatActivity {
-
     public static final String PREF_KEY_COMMENT0 = "PREFERENCE_KEY_COMMENT0";
     public static final String PREF_KEY_COMMENT1 = "PREFERENCE_KEY_COMMENT1";
     public static final String PREF_KEY_COMMENT2 = "PREFERENCE_KEY_COMMENT2";
@@ -82,7 +81,7 @@ public class History extends AppCompatActivity {
         listMood.setAdapter(new MyCustomAdapter(History.this, moodsList));
     }
 
-
+    //Creating custom ListView
     public class MyCustomAdapter extends ArrayAdapter {
         private Context context;
         private ArrayList<Mood> moodsList;

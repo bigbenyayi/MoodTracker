@@ -16,21 +16,20 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
-public class MainActivityTest {
+public class ActivityLaunchTest {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<MainActivity>(MainActivity.class);
 
     private MainActivity mActivity = null;
 
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(History.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(History.class.getName(), null, false);
 
 
     @Before
     public void setUp() throws Exception {
 
         mActivity = mActivityTestRule.getActivity();
-
     }
 
     @Test

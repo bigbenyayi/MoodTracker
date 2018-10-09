@@ -12,13 +12,6 @@ public class Mood {
         return moodColor;
     }
 
-    public void setMoodMessage(String moodMessage) {
-        this.moodMessage = moodMessage;
-    }
-
-    public void setMoodColor(Integer moodColor) {
-        this.moodColor = moodColor;
-    }
 
     Mood(String moodMessage, Integer moodColor) {
         this.moodMessage = moodMessage;
