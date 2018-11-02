@@ -57,7 +57,7 @@ public class Notification_receiver extends BroadcastReceiver {
 
         //extracting comments from SP
         String checkingComments0;
-        String checkingComments1 = (mPreferences.getString(PREF_KEY_COMMENT1, "")); //default value "" to not display empty strings gets treated in History activity
+        String checkingComments1 = (mPreferences.getString(PREF_KEY_COMMENT1, "")); //default value "" to not display empty strings (gets treated in History activity)
         String checkingComments2 = (mPreferences.getString(PREF_KEY_COMMENT2, ""));
         String checkingComments3 = (mPreferences.getString(PREF_KEY_COMMENT3, ""));
         String checkingComments4 = (mPreferences.getString(PREF_KEY_COMMENT4, ""));
