@@ -41,7 +41,7 @@ public class Notification_receiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d("it is time", "I've began");
+        Log.d("asdf", "I've began");
 
         //Extracting colors from SP
         SharedPreferences mPreferences = context.getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);

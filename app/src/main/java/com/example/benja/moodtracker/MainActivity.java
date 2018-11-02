@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        //Setting a time for app to update every day at midnight
+        //Setting a time for app to update at midnight by launching Broadcast Receiver
         Calendar calendar = Calendar.getInstance();
 
         calendar.set(Calendar.HOUR_OF_DAY, 0);

@@ -69,13 +69,13 @@ public class History extends AppCompatActivity {
 
 
         //Adding all that in an array
-        moodsList.add(new Mood(comment0, color0));
-        moodsList.add(new Mood(comment1, color1));
-        moodsList.add(new Mood(comment2, color2));
-        moodsList.add(new Mood(comment3, color3));
-        moodsList.add(new Mood(comment4, color4));
-        moodsList.add(new Mood(comment5, color5));
         moodsList.add(new Mood(comment6, color6));
+        moodsList.add(new Mood(comment5, color5));
+        moodsList.add(new Mood(comment4, color4));
+        moodsList.add(new Mood(comment3, color3));
+        moodsList.add(new Mood(comment2, color2));
+        moodsList.add(new Mood(comment1, color1));
+        moodsList.add(new Mood(comment0, color0));
 
 
         ListView listMood = findViewById(R.id.listViewMood);
@@ -123,7 +123,7 @@ public class History extends AppCompatActivity {
 
 
             //Displaying the days through he listview
-            String datesList[] = {"Last week", "6 days ago", "5 days ago", "4 days ago", "3 days ago", "2 days ago", "Yesterday"};
+            String datesList[] = {"Yesterday", "2 days ago", "3 days ago", "4 days ago", "5 days ago", "6 days ago", "Last week"};
             moodTextView.setText(datesList[position]);
 
             if (moodColor == 0) {
