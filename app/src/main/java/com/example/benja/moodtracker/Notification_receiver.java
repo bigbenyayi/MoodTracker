@@ -110,7 +110,8 @@ public class Notification_receiver extends BroadcastReceiver {
             mPreferences.edit().putInt("PREFERENCE_KEY_COLOR" + j, listOfMoods.get(j)).apply();
         }
 
-
+        mPreferences.edit().putInt("PREFERENCE_KEY_MOOD", 2).apply(); //Reseting mood to normal emoji if no mood is selected on days after
+        mPreferences.edit().putString("PREFERENCE_KEY_COMMENT", "").apply(); //Reseting comment to not duplicate comment for next days
     }
 }
 
