@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String BUNDLE_EXTRA_COMMENT = History.class.getCanonicalName().concat("BUNDLE_EXTRA_COMMENT");
 
 
-
     private GestureDetector mDetector;
 
 
@@ -155,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
             return false;
 
         }
+
         //changeImage() changes the background color and as the emoji displayed as well as updating the value of mood
         void changeImage() {
             ImageButton imageButton = findViewById(R.id.imageHowToUse);
