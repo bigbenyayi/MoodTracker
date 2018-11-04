@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -158,6 +159,7 @@ public class MainActivity extends AppCompatActivity {
         //changeImage() changes the background color and as the emoji displayed as well as updating the value of mood
         void changeImage() {
             ImageButton imageButton = findViewById(R.id.imageHowToUse);
+            ConstraintLayout constraintLayout = findViewById(R.id.constrainLayout);
             SharedPreferences mPreferences = getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
             MediaPlayer mediaPlayer;
 
@@ -165,21 +167,22 @@ public class MainActivity extends AppCompatActivity {
 
                 case 0:
                     imageButton.setImageResource(R.drawable.smiley_super_happy);
-                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.banana_yellow));
+                    constraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.banana_yellow));
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.super_happy_sound);
                     mediaPlayer.start();
+
                     break;
 
                 case 1:
                     imageButton.setImageResource(R.drawable.smiley_happy);
-                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.light_sage));
+                    constraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.light_sage));
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.happy_sound);
                     mediaPlayer.start();
                     break;
 
                 case 2:
                     imageButton.setImageResource(R.drawable.smiley_normal);
-                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.cornflower_blue_65));
+                    constraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.cornflower_blue_65));
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.medium_sound);
                     mediaPlayer.start();
 
@@ -187,7 +190,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case 3:
                     imageButton.setImageResource(R.drawable.smiley_disappointed);
-                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.warm_grey));
+                    constraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.warm_grey));
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.disappointed_sound);
                     mediaPlayer.start();
 
@@ -195,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
 
                 case 4:
                     imageButton.setImageResource(R.drawable.smiley_sad);
-                    imageButton.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.faded_red));
+                    constraintLayout.setBackgroundColor(ContextCompat.getColor(MainActivity.this, R.color.faded_red));
                     mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.sad_sound);
                     mediaPlayer.start();
 
@@ -203,6 +206,13 @@ public class MainActivity extends AppCompatActivity {
             }
             //Storing the mood in SharedPreferences
             mPreferences.edit().putInt("PREFERENCE_KEY_MOOD", mood).apply();
+            int cpt = mPreferences.getInt("counter", 0);
+            if (cpt == 1) {
+                mPreferences.edit().putInt("counter", 2).apply();
+            }
+
+
+
         }
     }
 }

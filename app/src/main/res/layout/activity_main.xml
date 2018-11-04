@@ -2,57 +2,56 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constrainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/banana_yellow"
     tools:context=".MainActivity">
 
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <ImageButton
+            android:id="@+id/imageHowToUse"
+            android:layout_width="match_parent"
+            android:layout_height="640dp"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:paddingBottom="100dp"
+            android:src="@drawable/smiley_super_happy" />
+
+        <ImageButton
+            android:id="@+id/historyButton"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignEnd="@+id/imageHowToUse"
+            android:layout_alignRight="@+id/imageHowToUse"
+            android:layout_alignBottom="@+id/imageHowToUse"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="80dp"
+            android:background="@null"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_history_black" />
+
+        <ImageButton
+            android:id="@+id/superHappyComment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/imageHowToUse"
+            android:layout_marginStart="35dp"
+            android:layout_marginLeft="35dp"
+            android:layout_marginBottom="100dp"
+            android:background="@null"
+            android:clickable="true"
+            android:contentDescription="@string/app_name"
+            android:focusable="true"
+            android:src="@drawable/ic_note_add_black" />
 
 
-            <ImageButton
-                android:id="@+id/imageHowToUse"
-                android:layout_width="match_parent"
-                android:layout_height="640dp"
-                android:background="@color/banana_yellow"
-                android:paddingBottom="100dp"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/smiley_super_happy" />
-
-            <ImageButton
-                android:id="@+id/historyButton"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_alignBottom="@+id/imageHowToUse"
-                android:layout_alignRight="@+id/imageHowToUse"
-                android:layout_marginBottom="80dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
-                android:background="@null"
-                android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_history_black"
-                android:layout_alignEnd="@+id/imageHowToUse" />
-
-            <ImageButton
-                android:id="@+id/superHappyComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageHowToUse"
-                android:layout_marginBottom="100dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginStart="35dp"
-                android:background="@null"
-                android:clickable="true"
-                android:contentDescription="@string/app_name"
-                android:focusable="true"
-                android:src="@drawable/ic_note_add_black" />
-
-
-
-
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
