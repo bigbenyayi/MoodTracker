@@ -20,14 +20,15 @@
         </activity>
         <activity
             android:name=".History"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            tools:targetApi="jelly_bean">
 
         </activity>
 
-        <receiver android:name=".Notification_receiver">
+        <receiver android:name=".Notification_receiver"
+            android:permission="@string/app_name">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.intent.action.INPUT_METHOD_CHANGED" />
+                <action android:name="com.example.benja.moodtracker.CUSTOM_INTENT" />
             </intent-filter>
         </receiver>
     </application>

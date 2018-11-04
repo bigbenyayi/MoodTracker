@@ -40,15 +40,15 @@ public class Notification_receiver extends BroadcastReceiver {
     //Defining the Arraylists that will hold the colors and the comments
     public List<Integer> listOfMoods = new ArrayList<>();
     final ArrayList<String> listOfComments = new ArrayList<>();
-
+    public static final String CUSTOM_INTENT = "com.example.benja.moodtracker.CUSTOM_INTENT";
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+
+            if (CUSTOM_INTENT.equals(intent.getAction())) {
             Log.d("asdf", "I've began");
 
-            IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-            filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+
 
             //Extracting colors from SP
             SharedPreferences mPreferences = context.getSharedPreferences("PREFERENCE_KEY_NAME", MODE_PRIVATE);
