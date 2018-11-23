@@ -21,7 +21,7 @@ import java.util.List;
 import static android.content.Context.MODE_PRIVATE;
 
 
-public class Notification_receiver extends BroadcastReceiver {
+public class NotificationReceiver extends BroadcastReceiver {
 
     public static final String CUSTOM_INTENT = "com.example.benja.moodtracker.CUSTOM_INTENT";
 
@@ -33,9 +33,11 @@ public class Notification_receiver extends BroadcastReceiver {
             Log.d("asdf", "I've began");
 
             mPreferences.edit().putInt("counter", 0).apply();
+            mPreferences.edit().putInt("PREFERENCE_KEY_COLOR", 2).apply();
+            mPreferences.edit().putString("PREFERENCE_KEY_COMMENT", "").apply();
 
         } else {
-            Log.d("tagtag", "received unsupported Intent " + intent);
+            Log.d("tagtag", "received unwanted intent: " + intent);
         }
 
     }

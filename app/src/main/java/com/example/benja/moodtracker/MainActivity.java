@@ -7,13 +7,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,11 +19,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
-
-import static android.content.Intent.EXTRA_TEXT;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -96,11 +90,11 @@ public class MainActivity extends AppCompatActivity {
         //Setting a time for app to update at midnight by launching Broadcast Receiver
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 55);
+        calendar.set(Calendar.SECOND, 50);
 
-        Intent intent = new Intent(getApplicationContext(), Notification_receiver.class);
+        Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 100, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         assert alarmManager != null;
@@ -206,10 +200,7 @@ public class MainActivity extends AppCompatActivity {
             }
             //Storing the mood in SharedPreferences
             mPreferences.edit().putInt("PREFERENCE_KEY_MOOD", mood).apply();
-            int cpt = mPreferences.getInt("counter", 0);
-            if (cpt == 1) {
-                mPreferences.edit().putInt("counter", 2).apply();
-            }
+
 
 
 

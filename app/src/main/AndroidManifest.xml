@@ -25,7 +25,7 @@
 
         </activity>
 
-        <receiver android:name=".Notification_receiver"
+        <receiver android:name=".NotificationReceiver"
             android:permission="@string/app_name">
             <intent-filter>
                 <action android:name="com.example.benja.moodtracker.CUSTOM_INTENT" />

@@ -130,7 +130,7 @@ public class History extends AppCompatActivity {
 
             mPreferences.edit().putInt("counter", 1).apply();
         }
-        if (cpt == 2) {
+        if (cpt == 1) {
             int mood = (mPreferences.getInt(PREF_KEY_MOOD, 2)); //If no mood selected --> normal emoji chosen
             String comment = (mPreferences.getString(PREF_KEY_COMMENT, ""));
             int checking0 = (mPreferences.getInt(PREF_KEY_COLOR0, 5));
@@ -139,7 +139,6 @@ public class History extends AppCompatActivity {
             int checking3 = (mPreferences.getInt(PREF_KEY_COLOR3, 5));
             int checking4 = (mPreferences.getInt(PREF_KEY_COLOR4, 5));
             int checking5 = (mPreferences.getInt(PREF_KEY_COLOR5, 5));
-            int checking6 = mood;
 
             //extracting comments from SP
             String checkingComments0 = (mPreferences.getString(PREF_KEY_COMMENT0, ""));
@@ -148,7 +147,6 @@ public class History extends AppCompatActivity {
             String checkingComments3 = (mPreferences.getString(PREF_KEY_COMMENT3, ""));
             String checkingComments4 = (mPreferences.getString(PREF_KEY_COMMENT4, ""));
             String checkingComments5 = (mPreferences.getString(PREF_KEY_COMMENT5, ""));
-            String checkingComments6 = comment;
 
             listOfComments.add(checkingComments0);
             listOfComments.add(checkingComments1);
@@ -156,7 +154,7 @@ public class History extends AppCompatActivity {
             listOfComments.add(checkingComments3);
             listOfComments.add(checkingComments4);
             listOfComments.add(checkingComments5);
-            listOfComments.add(checkingComments6);
+            listOfComments.add(comment);
 
             //Saving this list to SP
             for (int j = 0; j < listOfComments.size(); j++) {
@@ -169,7 +167,7 @@ public class History extends AppCompatActivity {
             listOfMoods.add(checking3);
             listOfMoods.add(checking4);
             listOfMoods.add(checking5);
-            listOfMoods.add(checking6);
+            listOfMoods.add(mood);
 
             //Saving this list to SP
             for (int j = 0; j < listOfMoods.size(); j++) {
